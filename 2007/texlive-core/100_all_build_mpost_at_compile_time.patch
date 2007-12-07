@@ -1,0 +1,13 @@
+Index: texlive-core/texk/web2c/Makefile.in
+===================================================================
+--- texlive-core.orig/texk/web2c/Makefile.in
++++ texlive-core/texk/web2c/Makefile.in
+@@ -566,7 +566,7 @@ kpse_include xetexdir/xetex.mk
+ programs = bibtex ctangle ctie cweave dvicopy dvitomp dvitype gftodvi gftopk \
+  gftype mft $(odvicopy) $(odvitype) $(otangle) patgen $(pdftosrc) \
+  pktogf pktype pltotf pooltype tangle tftopl tie $(ttf2afm) \
+- vftovp vptovf weave
++ vftovp vptovf weave mpost
+ engines = $(tex) $(etex) $(mf) $(mfn) $(mpost) \
+           $(omega) $(aleph) \
+           $(pdftex) $(pdfetex) \
