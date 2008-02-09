@@ -8,3 +8,4 @@
 080_all_texlive-core-2007-bump_makeindex_limitations.patch
 090_all_xpdf-3.02pl2.patch
 100_all_build_mpost_at_compile_time.patch
+110_all_icu_CVE-2007-4770.patch
