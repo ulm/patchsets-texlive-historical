@@ -1,0 +1,18 @@
+In order to compile lex.yy.c one needs y_tab.h
+This should fix a parallel make issue
+https://bugs.gentoo.org/show_bug.cgi?id=209362
+
+
+Index: texlive-core/texk/web2c/omegafonts/Makefile.in
+===================================================================
+--- texlive-core.orig/texk/web2c/omegafonts/Makefile.in
++++ texlive-core/texk/web2c/omegafonts/Makefile.in
+@@ -38,7 +38,7 @@ y_tab.c y_tab.h: pl.y
+ 	$(YACC) -d -v $(srcdir)/pl.y
+ 	-test -f y.tab.c && mv -f y.tab.c y_tab.c
+ 	-test -f y.tab.h && mv -f y.tab.h y_tab.h
+-$(LEX_OUTPUT_ROOT).o: parser.h
++$(LEX_OUTPUT_ROOT).o: parser.h y_tab.h
+ $(LEX_OUTPUT_ROOT).c: pl.l
+ 	$(LEX) $(srcdir)/pl.l
+ 
