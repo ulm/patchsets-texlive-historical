@@ -10,3 +10,4 @@
 100_all_build_mpost_at_compile_time.patch
 110_all_icu_CVE-2007-4770.patch
 120_all_omegafonts_parallel_make.patch
+130_all_gcc43.patch

@@ -1,0 +1,28 @@
+Patch by Hanno Meyer-Thurow to build with gcc 4.3
+https://bugs.gentoo.org/show_bug.cgi?id=213144
+
+Index: texlive-core/libs/teckit/source/Engine.cpp
+===================================================================
+--- texlive-core.orig/libs/teckit/source/Engine.cpp
++++ texlive-core/libs/teckit/source/Engine.cpp
+@@ -65,6 +65,7 @@ int	traceLevel = 1;
+ #endif
+ 
+ #include <cstdlib>
++#include <cstring>
+ #include <algorithm>
+ 
+ #include "zlib.h"
+Index: texlive-core/libs/teckit/source/ulong_chartraits.h
+===================================================================
+--- texlive-core.orig/libs/teckit/source/ulong_chartraits.h
++++ texlive-core/libs/teckit/source/ulong_chartraits.h
+@@ -2,7 +2,7 @@
+ #define __ulong_chartraits_h__
+ 
+ #include <iostream>
+-#include <string>
++#include <cstring>
+ 
+ /*
+ 	This used to be defined for unsigned long; changed to unsigned int for 64-bit architecture.
