@@ -79,10 +79,14 @@ TEXMF = {$TEXMFCONFIG,$TEXMFVAR,$TEXMFHOME,!!$TEXMFSYSCONFIG,!!$TEXMFSYSVAR,!!$T
 % otherwise the current working directory is used.
 SYSTEXMF = $TEXMFLOCAL;$TEXMFMAIN;$TEXMFDIST;$TEXMFSITE
 
+% We use GLOBALVARTEXFONTS in order to always be able to search in the global
+% font cache even if VARTEXFONTS is overridden.
+GLOBALVARTEXFONTS = $SELFAUTOPARENT/var/cache/fonts
+
 % Where generated fonts may be written.  This tree is used when the sources
 % were found in a system tree and either that tree wasn't writable, or the
 % varfonts feature was enabled in MT_FEATURES in mktex.cnf.
-VARTEXFONTS = $SELFAUTOPARENT/var/cache/fonts
+VARTEXFONTS = $GLOBALVARTEXFONTS
 
 % Where to look for ls-R files.  There need not be an ls-R in the
 % directories in this path, but if there is one, Kpathsea will use it.
@@ -92,7 +96,7 @@ VARTEXFONTS = $SELFAUTOPARENT/var/cache/fonts
 % ls-R is present, it will be used, and the disk will not be searched.
 % This is arguably a bug in kpathsea, but we will not think about it now.
 % 
-TEXMFDBS = $TEXMF;$VARTEXFONTS
+TEXMFDBS = $TEXMF;$GLOBALVARTEXFONTS
 
 % It may be convenient to define TEXMF like this:
 %   TEXMF = {$TEXMFHOME,!!$TEXMFLOCAL,!!$TEXMFMAIN,$HOME}

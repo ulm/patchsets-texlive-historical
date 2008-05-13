@@ -90,7 +90,7 @@ TEXINPUTS.pdfplatex     = .;$TEXMF/tex/{platex,latex,generic,}//
 TEXINPUTS               = .;$TEXMF/tex/{$progname,generic,}//
 
 % Metafont, MetaPost inputs.
-MFINPUTS = .;$TEXMF/metafont//;{$TEXMF/fonts,$VARTEXFONTS}/source//
+MFINPUTS = .;$TEXMF/metafont//;{$TEXMF/fonts,$GLOBALVARTEXFONTS,$VARTEXFONTS}/source//
 MPINPUTS = .;$TEXMF/metapost//
 
 % Dump files (fmt/base/mem) for vir{tex,mf,mp} to read (see web2c/INSTALL),
@@ -105,20 +105,20 @@ MFPOOL = .;$TEXMF/web2c
 MPPOOL = .;$TEXMF/web2c
 
 % support the original xdvi.  Must come before the generic settings.
-PKFONTS.XDvi   = .;$TEXMF/%s;$VARTEXFONTS/pk/{%m,modeless}//
+PKFONTS.XDvi   = .;$TEXMF/%s;{$GLOBALVARTEXFONTS,$VARTEXFONTS}/pk/{%m,modeless}//
 VFFONTS.XDvi   = .;$TEXMF/%s
 PSHEADERS.XDvi = .;$TEXMF/%q{dvips,fonts/type1}//
 TEXPICTS.XDvi  = .;$TEXMF/%q{dvips,tex}//
 
 % Device-independent font metric files.
 VFFONTS = .;$TEXMF/fonts/vf//
-TFMFONTS = .;{$TEXMF/fonts,$VARTEXFONTS}/tfm//
+TFMFONTS = .;{$TEXMF/fonts,$GLOBALVARTEXFONTS,$VARTEXFONTS}/tfm//
 
 % The $MAKETEX_MODE below means the drivers will not use a cx font when
 % the mode is ricoh.  If no mode is explicitly specified, kpse_prog_init
 % sets MAKETEX_MODE to /, so all subdirectories are searched.  See the manual.
 % The modeless part guarantees that bitmaps for PostScript fonts are found.
-PKFONTS = .;{$TEXMF/fonts,$VARTEXFONTS}/pk/{$MAKETEX_MODE,modeless}//
+PKFONTS = .;{$TEXMF/fonts,$GLOBALVARTEXFONTS,$VARTEXFONTS}/pk/{$MAKETEX_MODE,modeless}//
 
 % Similarly for the GF format, which only remains in existence because
 % Metafont outputs it (and MF isn't going to change).
@@ -221,10 +221,10 @@ WEBINPUTS = .;$TEXMF/web//
 CWEBINPUTS = .;$TEXMF/cweb//
 
 % Omega-related fonts and other files.
-OFMFONTS = .;{$TEXMF/fonts,$VARTEXFONTS}/{ofm,tfm}//
-OPLFONTS = .;{$TEXMF/fonts,$VARTEXFONTS}/opl//
-OVFFONTS = .;{$TEXMF/fonts,$VARTEXFONTS}/{ovf,vf}//
-OVPFONTS = .;{$TEXMF/fonts,$VARTEXFONTS}/ovp//
+OFMFONTS = .;{$TEXMF/fonts,$GLOBALVARTEXFONTS,$VARTEXFONTS}/{ofm,tfm}//
+OPLFONTS = .;{$TEXMF/fonts,$GLOBALVARTEXFONTS,$VARTEXFONTS}/opl//
+OVFFONTS = .;{$TEXMF/fonts,$GLOBALVARTEXFONTS,$VARTEXFONTS}/{ovf,vf}//
+OVPFONTS = .;{$TEXMF/fonts,$GLOBALVARTEXFONTS,$VARTEXFONTS}/ovp//
 OTPINPUTS = .;$TEXMF/omega/otp//
 OCPINPUTS = .;$TEXMF/omega/ocp//
 
