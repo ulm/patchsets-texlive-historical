@@ -1,3 +1,4 @@
 020_all_texlive-core-2007-libteckit-asneeded.patch
 110_all_icu_CVE-2007-4770.patch
 150_all_installedscripts.patch
+160_all_man5.patch
