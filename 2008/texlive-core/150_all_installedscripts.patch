@@ -74,3 +74,16 @@ Index: texlive-20080816-source/texk/texlive/Makefile.in
  	  ln -s $$d/$$s $$target; \
  	done
  	rm -f $(scriptdir)/getnonfreefonts-sys
+Index: texlive-20080816-source/texk/tetex/Makefile.in
+===================================================================
+--- texlive-20080816-source.orig/texk/tetex/Makefile.in
++++ texlive-20080816-source/texk/tetex/Makefile.in
+@@ -11,7 +11,7 @@ man5dir = $(mandir)/man5
+ 
+ SCRIPTS = \
+   allcm allneeded dvi2fax dvired fmtutil fmtutil-sys fontinst \
+-  kpsetool kpsewhere ps2frag ps4pdf pslatex rubibtex rumakeindex \
++  kpsetool kpsewhere ps2frag pslatex rubibtex rumakeindex \
+   texconfig texconfig-dialog texconfig-sys \
+   texlinks updmap updmap-sys
+ 
