@@ -2,3 +2,4 @@
 110_all_icu_CVE-2007-4770.patch
 150_all_installedscripts.patch
 160_all_man5.patch
+160_all_cxxflags_for_cplusplus.patch
