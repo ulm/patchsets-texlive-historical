@@ -2,7 +2,7 @@ Index: texlive-20080816-source/texk/texlive/Makefile.in
 ===================================================================
 --- texlive-20080816-source.orig/texk/texlive/Makefile.in
 +++ texlive-20080816-source/texk/texlive/Makefile.in
-@@ -14,53 +14,16 @@ LINKED_SCRIPTS = \
+@@ -14,53 +14,15 @@ LINKED_SCRIPTS = \
    texmf/scripts/a2ping/a2ping.pl \
    texmf/scripts/epstopdf/epstopdf.pl \
    texmf/scripts/pkfix/pkfix.pl \
@@ -13,7 +13,7 @@ Index: texlive-20080816-source/texk/texlive/Makefile.in
    texmf/scripts/texlive/getnonfreefonts.pl \
    texmf/scripts/texlive/rungs.tlu \
    texmf/scripts/texlive/texdoc.tlu \
-   texmf/scripts/texlive/tlmgr.pl \
+-  texmf/scripts/texlive/tlmgr.pl \
 -  texmf-dist/scripts/bengali/ebong.py \
    texmf-dist/scripts/dviasm/dviasm.py \
 -  texmf-dist/scripts/epspdf/epspdf \
@@ -56,7 +56,7 @@ Index: texlive-20080816-source/texk/texlive/Makefile.in
  
  manpgs = getnonfreefonts getnonfreefonts-sys
  
-@@ -108,13 +71,13 @@ install-exec:
+@@ -108,13 +70,13 @@ install-exec:
  	  target=$$target; \
  	  rm -f $$target; \
  	  case "$(scriptdir)" in \
