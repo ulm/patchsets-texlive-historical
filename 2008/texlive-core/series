@@ -7,3 +7,4 @@
 160_all_cxxflags_for_cplusplus.patch
 190_all_xpdf_const_char.patch
 200_all_xpdf-3.02pl3.patch
+210_all_getline.patch
