@@ -1,7 +1,7 @@
 Fix const checks that cause build failures with glibc 2.10 + gcc 4.4
 By  Jussi Kosunen, jsk105@zepler.net
 https://bugs.gentoo.org/show_bug.cgi?id=271052
-Upstream status unknown.
+Upstream status unknown. Not worth working on, TeX Live 2009 will use poppler.
 
 Index: texlive-20080816-source/libs/xpdf/goo/gfile.cc
 ===================================================================

@@ -1,3 +1,5 @@
+Upstream status unknown. Not worth working on, TeX Live 2009 will use poppler.
+
 Index: texlive-20080816-source/libs/xpdf/goo/gmem.cc
 ===================================================================
 --- texlive-20080816-source.orig/libs/xpdf/goo/gmem.cc

@@ -2,6 +2,7 @@ eliminate xpdf deprecated char* coversion warnings
 
 by Vladimir Rapatskiy <rapatsky@gmail.com>
 https://bugs.gentoo.org/show_bug.cgi?id=247982
+Upstream status unknown. Not worth working on, TeX Live 2009 will use poppler.
 
 Index: texlive-20080816-source/texk/web2c/pdftexdir/epdf.h
 ===================================================================
