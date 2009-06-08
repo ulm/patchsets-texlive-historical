@@ -3,10 +3,11 @@ eliminate xpdf deprecated char* coversion warnings
 by Vladimir Rapatskiy <rapatsky@gmail.com>
 https://bugs.gentoo.org/show_bug.cgi?id=247982
 
-diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/epdf.h texlive-20080816-source/texk/web2c/pdftexdir/epdf.h
---- texlive-20080816-source/texk/web2c/pdftexdir.orig/epdf.h	2008-11-21 19:40:30.000000000 +0300
-+++ texlive-20080816-source/texk/web2c/pdftexdir/epdf.h	2008-11-21 19:51:16.000000000 +0300
-@@ -78,7 +78,7 @@
+Index: texlive-20080816-source/texk/web2c/pdftexdir/epdf.h
+===================================================================
+--- texlive-20080816-source.orig/texk/web2c/pdftexdir/epdf.h
++++ texlive-20080816-source/texk/web2c/pdftexdir/epdf.h
+@@ -78,7 +78,7 @@ extern "C" {
      extern char notdef[];
  
      extern int is_subsetable(struct fm_entry *);
@@ -15,7 +16,7 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/epdf.h texlive-200808
      extern integer get_fontfile(struct fm_entry *);
      extern integer get_fontname(struct fm_entry *);
      extern integer pdfnewobjnum(void);
-@@ -116,7 +116,7 @@
+@@ -116,7 +116,7 @@ extern "C" {
      extern int get_fn_objnum(struct fd_entry *);
  
  /* write_enc.c */
@@ -24,10 +25,11 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/epdf.h texlive-200808
  
  /* utils.c */
      extern char *convertStringToPDFString(char *in, int len);
-diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/mapfile.c texlive-20080816-source/texk/web2c/pdftexdir/mapfile.c
---- texlive-20080816-source/texk/web2c/pdftexdir.orig/mapfile.c	2008-11-21 19:40:30.000000000 +0300
-+++ texlive-20080816-source/texk/web2c/pdftexdir/mapfile.c	2008-11-21 19:56:54.000000000 +0300
-@@ -645,10 +645,11 @@
+Index: texlive-20080816-source/texk/web2c/pdftexdir/mapfile.c
+===================================================================
+--- texlive-20080816-source.orig/texk/web2c/pdftexdir/mapfile.c
++++ texlive-20080816-source/texk/web2c/pdftexdir/mapfile.c
+@@ -645,10 +645,11 @@ static boolean fm_valid_for_font_replace
   * used for Type1 font replacement when embedding of PDF files
   */
  
@@ -41,7 +43,7 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/mapfile.c texlive-200
      int i, sl, ex;
      struct avl_traverser t, t2;
      if (tfm_tree == NULL)
-@@ -705,7 +706,7 @@
+@@ -705,7 +706,7 @@ fm_entry *lookup_fontmap(char *ps_name)
              }
          }
      }
@@ -50,10 +52,11 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/mapfile.c texlive-200
  
      fm = (fm_entry *) avl_t_find(&t, ps_tree, &tmp);
      if (fm == NULL)
-diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc texlive-20080816-source/texk/web2c/pdftexdir/pdftoepdf.cc
---- texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc	2008-11-21 19:40:30.000000000 +0300
-+++ texlive-20080816-source/texk/web2c/pdftexdir/pdftoepdf.cc	2008-11-21 19:57:43.000000000 +0300
-@@ -281,7 +281,7 @@
+Index: texlive-20080816-source/texk/web2c/pdftexdir/pdftoepdf.cc
+===================================================================
+--- texlive-20080816-source.orig/texk/web2c/pdftexdir/pdftoepdf.cc
++++ texlive-20080816-source/texk/web2c/pdftexdir/pdftoepdf.cc
+@@ -281,7 +281,7 @@ static int getNewObjectNumber(Ref ref)
  
  static void copyObject(Object *);
  
@@ -62,7 +65,7 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc texlive-
  {
      pdf_puts("/");
      for (; *s != 0; s++) {
-@@ -316,7 +316,7 @@
+@@ -316,7 +316,7 @@ static void copyDict(Object * obj)
  static void copyFontDict(Object * obj, InObj * r)
  {
      int i, l;
@@ -71,7 +74,7 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc texlive-
      if (!obj->isDict())
          pdftex_fail("PDF inclusion: invalid dict type <%s>",
                      obj->getTypeName());
-@@ -369,7 +369,7 @@
+@@ -369,7 +369,7 @@ static void copyProcSet(Object * obj)
  
  #define REPLACE_TYPE1C true
  
@@ -80,7 +83,7 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc texlive-
  {
      PdfObject fontdict, subtype, basefont, fontdescRef, fontdesc, charset,
          fontfile, ffsubtype, stemV;
-@@ -441,7 +441,7 @@
+@@ -441,7 +441,7 @@ static void copyFontResources(Object * o
      pdf_puts(">>\n");
  }
  
@@ -89,7 +92,7 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc texlive-
  {
      // copies all other resources (write_epdf handles Fonts and ProcSets),
      // but gives a warning if an object is not a dictionary.
-@@ -626,7 +626,7 @@
+@@ -626,7 +626,7 @@ static void writeRefs()
  static void writeEncodings()
  {
      UsedEncoding *r, *n;
@@ -98,7 +101,7 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc texlive-
      int i;
      for (r = encodingList; r != 0; r = r->next) {
          for (i = 0; i < 256; i++) {
-@@ -809,7 +809,7 @@
+@@ -809,7 +809,7 @@ void write_epdf(void)
      PdfObject contents, obj1, obj2;
      PdfObject metadata, pieceinfo, separationInfo;
      Object info;
@@ -107,10 +110,11 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/pdftoepdf.cc texlive-
      char s[256];
      int i, l;
      int rotate;
-diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/ptexlib.h texlive-20080816-source/texk/web2c/pdftexdir/ptexlib.h
---- texlive-20080816-source/texk/web2c/pdftexdir.orig/ptexlib.h	2008-11-21 19:40:30.000000000 +0300
-+++ texlive-20080816-source/texk/web2c/pdftexdir/ptexlib.h	2008-11-21 19:44:10.000000000 +0300
-@@ -172,7 +172,7 @@
+Index: texlive-20080816-source/texk/web2c/pdftexdir/ptexlib.h
+===================================================================
+--- texlive-20080816-source.orig/texk/web2c/pdftexdir/ptexlib.h
++++ texlive-20080816-source/texk/web2c/pdftexdir/ptexlib.h
+@@ -172,7 +172,7 @@ extern integer get_fontname_num(int);
  extern void epdf_free(void);
  
  /* mapfile.c */
@@ -119,10 +123,11 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/ptexlib.h texlive-200
  extern boolean hasfmentry(internalfontnumber);
  extern void fm_free(void);
  extern void fm_read_info(void);
-diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/writeenc.c texlive-20080816-source/texk/web2c/pdftexdir/writeenc.c
---- texlive-20080816-source/texk/web2c/pdftexdir.orig/writeenc.c	2008-11-21 19:40:30.000000000 +0300
-+++ texlive-20080816-source/texk/web2c/pdftexdir/writeenc.c	2008-11-21 19:51:40.000000000 +0300
-@@ -111,7 +111,7 @@
+Index: texlive-20080816-source/texk/web2c/pdftexdir/writeenc.c
+===================================================================
+--- texlive-20080816-source.orig/texk/web2c/pdftexdir/writeenc.c
++++ texlive-20080816-source/texk/web2c/pdftexdir/writeenc.c
+@@ -111,7 +111,7 @@ void epdf_write_enc(char **glyph_names, 
      pdfenddict();
  }
  
@@ -131,9 +136,10 @@ diff -ur texlive-20080816-source/texk/web2c/pdftexdir.orig/writeenc.c texlive-20
  {
      int i_old, *p;
      struct avl_traverser t;
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.cc texlive-20080816-source/libs/xpdf/fofi/FoFiBase.cc
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiBase.cc	2008-11-21 17:12:15.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiBase.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiBase.cc
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiBase.cc
 @@ -20,7 +20,7 @@
  // FoFiBase
  //------------------------------------------------------------------------
@@ -143,7 +149,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.cc texlive-2008081
    fileData = file = (Guchar *)fileA;
    len = lenA;
    freeFileData = freeFileDataA;
-@@ -32,7 +32,7 @@
+@@ -32,7 +32,7 @@ FoFiBase::~FoFiBase() {
    }
  }
  
@@ -152,9 +158,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.cc texlive-2008081
    FILE *f;
    char *buf;
    int n;
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.h texlive-20080816-source/libs/xpdf/fofi/FoFiBase.h
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiBase.h	2008-11-21 17:11:30.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiBase.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiBase.h
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiBase.h
 @@ -19,7 +19,7 @@
  
  //------------------------------------------------------------------------
@@ -164,7 +171,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.h texlive-20080816
  
  //------------------------------------------------------------------------
  // FoFiBase
-@@ -32,8 +32,8 @@
+@@ -32,8 +32,8 @@ public:
  
  protected:
  
@@ -175,9 +182,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiBase.h texlive-20080816
  
    // S = signed / U = unsigned
    // 8/16/32/Var = word length, in bytes
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.cc texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.cc
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.cc	2008-11-21 17:57:18.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiEncodings.cc
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.cc
 @@ -19,7 +19,7 @@
  // Type 1 and 1C font data
  //------------------------------------------------------------------------
@@ -187,7 +195,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.cc texlive-20
    NULL,
    NULL,
    NULL,
-@@ -278,7 +278,7 @@
+@@ -278,7 +278,7 @@ char *fofiType1StandardEncoding[256] = {
    NULL
  };
  
@@ -196,7 +204,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.cc texlive-20
    NULL,
    NULL,
    NULL,
-@@ -541,7 +541,7 @@
+@@ -541,7 +541,7 @@ char *fofiType1ExpertEncoding[256] = {
  // Type 1C font data
  //------------------------------------------------------------------------
  
@@ -205,9 +213,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.cc texlive-20
    ".notdef",
    "space",
    "exclam",
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.h texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.h
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.h	2008-11-21 17:56:55.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiEncodings.h
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiEncodings.h
 @@ -21,14 +21,14 @@
  // Type 1 and 1C font data
  //------------------------------------------------------------------------
@@ -226,10 +235,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiEncodings.h texlive-200
  extern Gushort fofiType1CISOAdobeCharset[229];
  extern Gushort fofiType1CExpertCharset[166];
  extern Gushort fofiType1CExpertSubsetCharset[87];
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.cc
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.cc	2008-11-21 17:36:50.000000000 +0300
-@@ -143,7 +143,7 @@
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiTrueType.cc
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.cc
+@@ -143,7 +143,7 @@ static int cmpTrueTypeTableTag(const voi
  //------------------------------------------------------------------------
  
  struct T42Table {
@@ -238,7 +248,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    GBool required;		// required by the TrueType spec?
  };
  
-@@ -173,7 +173,7 @@
+@@ -173,7 +173,7 @@ static T42Table t42Tables[nT42Tables] = 
  
  // Glyph names in some arbitrary standard order that Apple uses for
  // their TrueType fonts.
@@ -247,7 +257,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    ".notdef",        "null",           "CR",             "space",
    "exclam",         "quotedbl",       "numbersign",     "dollar",
    "percent",        "ampersand",      "quotesingle",    "parenleft",
-@@ -245,7 +245,7 @@
+@@ -245,7 +245,7 @@ static char *macGlyphNames[258] = {
  // FoFiTrueType
  //------------------------------------------------------------------------
  
@@ -256,7 +266,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    FoFiTrueType *ff;
  
    ff = new FoFiTrueType(fileA, lenA, gFalse);
-@@ -256,9 +256,9 @@
+@@ -256,9 +256,9 @@ FoFiTrueType *FoFiTrueType::make(char *f
    return ff;
  }
  
@@ -268,7 +278,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    int lenA;
  
    if (!(fileA = FoFiBase::readFile(fileName, &lenA))) {
-@@ -272,7 +272,7 @@
+@@ -272,7 +272,7 @@ FoFiTrueType *FoFiTrueType::load(char *f
    return ff;
  }
  
@@ -277,7 +287,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    FoFiBase(fileA, lenA, freeFileDataA)
  {
    tables = NULL;
-@@ -388,7 +388,7 @@
+@@ -388,7 +388,7 @@ Gushort FoFiTrueType::mapCodeToGID(int i
    return gid;
  }
  
@@ -286,7 +296,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    if (!nameToGID) {
      return 0;
    }
-@@ -408,7 +408,7 @@
+@@ -408,7 +408,7 @@ Gushort *FoFiTrueType::getCIDToGIDMap(in
    if (!checkRegion(tables[i].offset, tables[i].len)) {
      return NULL;
    }
@@ -295,7 +305,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  			      tables[i].len))) {
      return NULL;
    }
-@@ -441,7 +441,7 @@
+@@ -441,7 +441,7 @@ int FoFiTrueType::getEmbeddingRights() {
    return 3;
  }
  
@@ -304,7 +314,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  				   Gushort *codeToGID,
  				   FoFiOutputFunc outputFunc,
  				   void *outputStream) {
-@@ -481,7 +481,7 @@
+@@ -481,7 +481,7 @@ void FoFiTrueType::convertToType42(char 
    (*outputFunc)(outputStream, "FontName currentdict end definefont pop\n", 40);
  }
  
@@ -313,7 +323,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  				  GBool ascii, FoFiOutputFunc outputFunc,
  				  void *outputStream) {
    FoFiType1C *ff;
-@@ -494,7 +494,7 @@
+@@ -494,7 +494,7 @@ void FoFiTrueType::convertToType1(char *
    if (!checkRegion(tables[i].offset, tables[i].len)) {
      return;
    }
@@ -322,7 +332,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  			      tables[i].len))) {
      return;
    }
-@@ -502,7 +502,7 @@
+@@ -502,7 +502,7 @@ void FoFiTrueType::convertToType1(char *
    delete ff;
  }
  
@@ -331,7 +341,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  				     Gushort *cidMap, int nCIDs,
  				     GBool needVerticalMetrics,
  				     FoFiOutputFunc outputFunc,
-@@ -632,7 +632,7 @@
+@@ -632,7 +632,7 @@ void FoFiTrueType::convertToCIDType2(cha
  		56);
  }
  
@@ -340,7 +350,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  				     FoFiOutputFunc outputFunc,
  				     void *outputStream) {
    FoFiType1C *ff;
-@@ -645,7 +645,7 @@
+@@ -645,7 +645,7 @@ void FoFiTrueType::convertToCIDType0(cha
    if (!checkRegion(tables[i].offset, tables[i].len)) {
      return;
    }
@@ -349,7 +359,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  			      tables[i].len))) {
      return;
    }
-@@ -653,7 +653,7 @@
+@@ -653,7 +653,7 @@ void FoFiTrueType::convertToCIDType0(cha
    delete ff;
  }
  
@@ -358,7 +368,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  				  GBool needVerticalMetrics,
  				  FoFiOutputFunc outputFunc,
  				  void *outputStream) {
-@@ -736,7 +736,7 @@
+@@ -736,7 +736,7 @@ void FoFiTrueType::convertToType0(char *
    (*outputFunc)(outputStream, "FontName currentdict end definefont pop\n", 40);
  }
  
@@ -367,7 +377,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  				  FoFiOutputFunc outputFunc,
  				  void *outputStream) {
    FoFiType1C *ff;
-@@ -749,7 +749,7 @@
+@@ -749,7 +749,7 @@ void FoFiTrueType::convertToType0(char *
    if (!checkRegion(tables[i].offset, tables[i].len)) {
      return;
    }
@@ -376,7 +386,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  			      tables[i].len))) {
      return;
    }
-@@ -758,7 +758,7 @@
+@@ -758,7 +758,7 @@ void FoFiTrueType::convertToType0(char *
  }
  
  void FoFiTrueType::writeTTF(FoFiOutputFunc outputFunc,
@@ -385,7 +395,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  			    Gushort *codeToGID) {
    // this substitute cmap table maps char codes 0000-ffff directly to
    // glyphs 0000-ffff
-@@ -930,7 +930,7 @@
+@@ -930,7 +930,7 @@ void FoFiTrueType::writeTTF(FoFiOutputFu
    if (!missingCmap && !missingName && !missingPost && !missingOS2 &&
        !unsortedLoca && !badCmapLen && !abbrevHMTX && nZeroLengthTables == 0 &&
        !name && !codeToGID) {
@@ -394,7 +404,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
      goto done1;
    }
  
-@@ -1279,14 +1279,14 @@
+@@ -1279,14 +1279,14 @@ void FoFiTrueType::writeTTF(FoFiOutputFu
    for (i = 0; i < nNewTables; ++i) {
      if (newTables[i].tag == headTag) {
        if (checkRegion(newTables[i].origOffset, newTables[i].len)) {
@@ -411,7 +421,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  		      newTables[i].len - 12);
        } else {
  	for (j = 0; j < newTables[i].len; ++j) {
-@@ -1330,7 +1330,7 @@
+@@ -1330,7 +1330,7 @@ void FoFiTrueType::writeTTF(FoFiOutputFu
  	if (n > 0) {
  	  k = locaTable[j].origOffset;
  	  if (checkRegion(pos + k, n)) {
@@ -420,7 +430,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  	  } else {
  	    for (k = 0; k < n; ++k) {
  	      (*outputFunc)(outputStream, "\0", 1);
-@@ -1343,7 +1343,7 @@
+@@ -1343,7 +1343,7 @@ void FoFiTrueType::writeTTF(FoFiOutputFu
        }
      } else {
        if (checkRegion(newTables[i].origOffset, newTables[i].len)) {
@@ -429,7 +439,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  		      newTables[i].len);
        } else {
  	for (j = 0; j < newTables[i].len; ++j) {
-@@ -1366,10 +1366,10 @@
+@@ -1366,10 +1366,10 @@ void FoFiTrueType::writeTTF(FoFiOutputFu
    gfree(locaTable);
  }
  
@@ -442,7 +452,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    GString *buf;
    int i;
  
-@@ -1395,11 +1395,11 @@
+@@ -1395,11 +1395,11 @@ void FoFiTrueType::cvtEncoding(char **en
    (*outputFunc)(outputStream, "readonly def\n", 13);
  }
  
@@ -456,7 +466,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    GString *buf;
    char buf2[16];
    int i, k;
-@@ -1980,7 +1980,7 @@
+@@ -1980,7 +1980,7 @@ void FoFiTrueType::readPostTable() {
  	if (!ok || !checkRegion(stringPos + 1, m)) {
  	  goto err;
  	}
@@ -465,7 +475,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
  	nameToGID->removeInt(name);
  	nameToGID->add(name, i);
  	++stringIdx;
-@@ -2010,7 +2010,7 @@
+@@ -2010,7 +2010,7 @@ void FoFiTrueType::readPostTable() {
    }
  }
  
@@ -474,10 +484,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.cc texlive-200
    Guint tagI;
    int i;
  
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.h
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.h	2008-11-21 17:33:33.000000000 +0300
-@@ -31,10 +31,10 @@
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiTrueType.h
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiTrueType.h
+@@ -31,10 +31,10 @@ class FoFiTrueType: public FoFiBase {
  public:
  
    // Create a FoFiTrueType object from a memory buffer.
@@ -490,7 +501,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  
    virtual ~FoFiTrueType();
  
-@@ -61,7 +61,7 @@
+@@ -61,7 +61,7 @@ public:
    // Returns the GID corresponding to <name> according to the post
    // table.  Returns 0 if there is no mapping for <name> or if the
    // font does not have a post table.
@@ -499,7 +510,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  
    // Return the mapping from CIDs to GIDs, and return the number of
    // CIDs in *<nCIDs>.  This is only useful for CID fonts.  (Only
-@@ -84,7 +84,7 @@
+@@ -84,7 +84,7 @@ public:
    // If <encoding> is NULL, the encoding is unknown or undefined.  The
    // <codeToGID> array specifies the mapping from char codes to GIDs.
    // (Not useful for OpenType CFF fonts.)
@@ -508,7 +519,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  		       Gushort *codeToGID,
  		       FoFiOutputFunc outputFunc, void *outputStream);
  
-@@ -95,7 +95,7 @@
+@@ -95,7 +95,7 @@ public:
    // otherwise it will be left as binary data.  If <psName> is
    // non-NULL, it will be used as the PostScript font name.  (Only
    // useful for OpenType CFF fonts.)
@@ -517,7 +528,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  		      FoFiOutputFunc outputFunc, void *outputStream);
  
    // Convert to a Type 2 CIDFont, suitable for embedding in a
-@@ -103,14 +103,14 @@
+@@ -103,14 +103,14 @@ public:
    // name (so we don't need to depend on the 'name' table in the
    // font).  The <cidMap> array maps CIDs to GIDs; it has <nCIDs>
    // entries.  (Not useful for OpenType CFF fonts.)
@@ -534,7 +545,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  			 FoFiOutputFunc outputFunc, void *outputStream);
  
    // Convert to a Type 0 (but non-CID) composite font, suitable for
-@@ -118,14 +118,14 @@
+@@ -118,14 +118,14 @@ public:
    // PostScript font name (so we don't need to depend on the 'name'
    // table in the font).  The <cidMap> array maps CIDs to GIDs; it has
    // <nCIDs> entries.  (Not useful for OpenType CFF fonts.)
@@ -551,7 +562,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  		      FoFiOutputFunc outputFunc, void *outputStream);
  
    // Write a clean TTF file, filling in missing tables and correcting
-@@ -135,15 +135,15 @@
+@@ -135,15 +135,15 @@ public:
    // complete and correct, it will be written unmodified.  (Not useful
    // for OpenType CFF fonts.)
    void writeTTF(FoFiOutputFunc outputFunc, void *outputStream,
@@ -571,7 +582,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  		      Gushort *codeToGID,
  		      FoFiOutputFunc outputFunc,
  		      void *outputStream);
-@@ -156,7 +156,7 @@
+@@ -156,7 +156,7 @@ private:
    Guint computeTableChecksum(Guchar *data, int length);
    void parse();
    void readPostTable();
@@ -580,9 +591,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiTrueType.h texlive-2008
  
    TrueTypeTable *tables;
    int nTables;
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc texlive-20080816-source/libs/xpdf/fofi/FoFiType1.cc
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1.cc	2008-11-21 18:08:22.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiType1.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiType1.cc
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1.cc
 @@ -22,12 +22,12 @@
  // FoFiType1
  //------------------------------------------------------------------------
@@ -599,7 +611,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc texlive-200808
    int lenA;
  
    if (!(fileA = FoFiBase::readFile(fileName, &lenA))) {
-@@ -36,7 +36,7 @@
+@@ -36,7 +36,7 @@ FoFiType1 *FoFiType1::load(char *fileNam
    return new FoFiType1(fileA, lenA, gTrue);
  }
  
@@ -608,7 +620,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc texlive-200808
    FoFiBase(fileA, lenA, freeFileDataA)
  {
    name = NULL;
-@@ -48,46 +48,46 @@
+@@ -48,46 +48,46 @@ FoFiType1::~FoFiType1() {
    int i;
  
    if (name) {
@@ -664,7 +676,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc texlive-200808
  
    // write the new encoding
    (*outputFunc)(outputStream, "/Encoding 256 array\n", 20);
-@@ -150,12 +150,12 @@
+@@ -150,12 +150,12 @@ void FoFiType1::writeEncoded(char **newE
  
      // copy everything after the encoding
      if (line) {
@@ -679,7 +691,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc texlive-200808
    while (line < (char *)file + len && *line != '\x0a' && *line != '\x0d') {
      ++line;
    }
-@@ -172,7 +172,8 @@
+@@ -172,7 +172,8 @@ char *FoFiType1::getNextLine(char *line)
  }
  
  void FoFiType1::parse() {
@@ -689,7 +701,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc texlive-200808
    char buf[256];
    char c;
    int n, code, i, j;
-@@ -197,7 +198,7 @@
+@@ -197,7 +198,7 @@ void FoFiType1::parse() {
        encoding = fofiType1StandardEncoding;
      } else if (!encoding &&
  	       !strncmp(line, "/Encoding 256 array", 19)) {
@@ -698,10 +710,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.cc texlive-200808
        for (j = 0; j < 256; ++j) {
  	encoding[j] = NULL;
        }
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.cc
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.cc	2008-11-21 18:10:14.000000000 +0300
-@@ -28,7 +28,7 @@
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiType1C.cc
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.cc
+@@ -28,7 +28,7 @@ static char hexChars[17] = "0123456789AB
  // FoFiType1C
  //------------------------------------------------------------------------
  
@@ -710,7 +723,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
    FoFiType1C *ff;
  
    ff = new FoFiType1C(fileA, lenA, gFalse);
-@@ -39,9 +39,9 @@
+@@ -39,9 +39,9 @@ FoFiType1C *FoFiType1C::make(char *fileA
    return ff;
  }
  
@@ -722,7 +735,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
    int lenA;
  
    if (!(fileA = FoFiBase::readFile(fileName, &lenA))) {
-@@ -55,7 +55,7 @@
+@@ -55,7 +55,7 @@ FoFiType1C *FoFiType1C::load(char *fileN
    return ff;
  }
  
@@ -731,7 +744,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
    FoFiBase(fileA, lenA, freeFileDataA)
  {
    name = NULL;
-@@ -75,7 +75,7 @@
+@@ -75,7 +75,7 @@ FoFiType1C::~FoFiType1C() {
        encoding != fofiType1StandardEncoding &&
        encoding != fofiType1ExpertEncoding) {
      for (i = 0; i < 256; ++i) {
@@ -740,7 +753,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
      }
      gfree(encoding);
    }
-@@ -93,11 +93,11 @@
+@@ -93,11 +93,11 @@ FoFiType1C::~FoFiType1C() {
    }
  }
  
@@ -755,7 +768,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
    return encoding;
  }
  
-@@ -129,7 +129,7 @@
+@@ -129,7 +129,7 @@ Gushort *FoFiType1C::getCIDToGIDMap(int 
    return map;
  }
  
@@ -764,7 +777,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  				FoFiOutputFunc outputFunc,
  				void *outputStream) {
    int psNameLen;
-@@ -138,7 +138,7 @@
+@@ -138,7 +138,7 @@ void FoFiType1C::convertToType1(char *ps
    Type1CIndexVal val;
    GString *buf;
    char buf2[256];
@@ -773,7 +786,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
    GBool ok;
    int i;
  
-@@ -429,7 +429,7 @@
+@@ -429,7 +429,7 @@ void FoFiType1C::convertToType1(char *ps
    (*outputFunc)(outputStream, "cleartomark\n", 12);
  }
  
@@ -782,7 +795,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  				   FoFiOutputFunc outputFunc,
  				   void *outputStream) {
    int *cidMap;
-@@ -755,7 +755,7 @@
+@@ -755,7 +755,7 @@ void FoFiType1C::convertToCIDType0(char 
    gfree(cidMap);
  }
  
@@ -791,7 +804,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  				FoFiOutputFunc outputFunc,
  				void *outputStream) {
    int *cidMap;
-@@ -1066,7 +1066,7 @@
+@@ -1066,7 +1066,7 @@ void FoFiType1C::convertToType0(char *ps
    gfree(cidMap);
  }
  
@@ -800,7 +813,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  			       int offset, int nBytes,
  			       Type1CIndex *subrIdx,
  			       Type1CPrivateDict *pDict) {
-@@ -1789,10 +1789,10 @@
+@@ -1789,10 +1789,10 @@ void FoFiType1C::cvtNum(double x, GBool 
        n = 5;
      }
    }
@@ -813,7 +826,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
    Guchar *p;
    Guchar x;
  
-@@ -1808,7 +1808,7 @@
+@@ -1808,7 +1808,7 @@ void FoFiType1C::eexecWrite(Type1CEexecB
  	eb->line = 0;
        }
      } else {
@@ -822,7 +835,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
      }
    }
  }
-@@ -1831,7 +1831,7 @@
+@@ -1831,7 +1831,7 @@ void FoFiType1C::eexecWriteCharstring(Ty
  	eb->line = 0;
        }
      } else {
@@ -831,7 +844,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
      }
    }
  }
-@@ -1866,7 +1866,7 @@
+@@ -1866,7 +1866,7 @@ GBool FoFiType1C::parse() {
    if (!parsedOk) {
      return gFalse;
    }
@@ -840,7 +853,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  
    // read the top dict for the first font
    readTopDict();
-@@ -2267,7 +2267,7 @@
+@@ -2267,7 +2267,7 @@ void FoFiType1C::buildEncoding() {
      encoding = fofiType1ExpertEncoding;
  
    } else {
@@ -849,7 +862,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
      for (i = 0; i < 256; ++i) {
        encoding[i] = NULL;
      }
-@@ -2290,7 +2290,7 @@
+@@ -2290,7 +2290,7 @@ void FoFiType1C::buildEncoding() {
  	  return;
  	}
  	if (encoding[c]) {
@@ -858,7 +871,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  	}
  	encoding[c] = copyString(getString(charset[i], buf, &parsedOk));
        }
-@@ -2309,7 +2309,7 @@
+@@ -2309,7 +2309,7 @@ void FoFiType1C::buildEncoding() {
  	for (j = 0; j <= nLeft && nCodes < nGlyphs; ++j) {
  	  if (c < 256) {
  	    if (encoding[c]) {
@@ -867,7 +880,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  	    }
  	    encoding[c] = copyString(getString(charset[nCodes], buf,
  					       &parsedOk));
-@@ -2335,7 +2335,7 @@
+@@ -2335,7 +2335,7 @@ void FoFiType1C::buildEncoding() {
  	  return;
  	}
  	if (encoding[c]) {
@@ -876,7 +889,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
  	}
  	encoding[c] = copyString(getString(sid, buf, &parsedOk));
        }
-@@ -2593,7 +2593,7 @@
+@@ -2593,7 +2593,7 @@ char *FoFiType1C::getString(int sid, cha
        if ((n = val.len) > 255) {
  	n = 255;
        }
@@ -885,10 +898,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.cc texlive-20080
        buf[n] = '\0';
      } else {
        buf[0] = '\0';
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.h texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.h
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.h	2008-11-21 18:10:41.000000000 +0300
-@@ -135,19 +135,19 @@
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiType1C.h
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1C.h
+@@ -135,19 +135,19 @@ class FoFiType1C: public FoFiBase {
  public:
  
    // Create a FoFiType1C object from a memory buffer.
@@ -912,7 +926,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.h texlive-200808
  
    // Return the mapping from CIDs to GIDs, and return the number of
    // CIDs in *<nCIDs>.  This is only useful for CID fonts.
-@@ -159,25 +159,25 @@
+@@ -159,25 +159,25 @@ public:
    // font.  If <ascii> is true the eexec section will be hex-encoded,
    // otherwise it will be left as binary data.  If <psName> is non-NULL,
    // it will be used as the PostScript font name.
@@ -943,7 +957,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.h texlive-200808
  		     int offset, int nBytes,
  		     Type1CIndex *subrIdx,
  		     Type1CPrivateDict *pDict);
-@@ -187,7 +187,7 @@
+@@ -187,7 +187,7 @@ private:
    void cvtGlyphWidth(GBool useOp, GString *charBuf,
  		     Type1CPrivateDict *pDict);
    void cvtNum(double x, GBool isFP, GString *charBuf);
@@ -952,7 +966,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.h texlive-200808
    void eexecWriteCharstring(Type1CEexecBuf *eb, Guchar *s, int n);
    GBool parse();
    void readTopDict();
-@@ -204,7 +204,7 @@
+@@ -204,7 +204,7 @@ private:
    char *getString(int sid, char *buf, GBool *ok);
  
    GString *name;
@@ -961,10 +975,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1C.h texlive-200808
  
    Type1CIndex nameIdx;
    Type1CIndex topDictIdx;
-diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.h texlive-20080816-source/libs/xpdf/fofi/FoFiType1.h
---- texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1.h	2008-11-21 17:01:07.000000000 +0300
-@@ -26,33 +26,33 @@
+Index: texlive-20080816-source/libs/xpdf/fofi/FoFiType1.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/fofi/FoFiType1.h
++++ texlive-20080816-source/libs/xpdf/fofi/FoFiType1.h
+@@ -26,33 +26,33 @@ class FoFiType1: public FoFiBase {
  public:
  
    // Create a FoFiType1 object from a memory buffer.
@@ -1007,10 +1022,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/fofi/FoFiType1.h texlive-2008081
    GBool parsed;
  };
  
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-source/libs/xpdf/goo/gfile.cc
---- texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc	2008-05-08 17:40:41.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/goo/gfile.cc	2008-11-21 16:55:23.000000000 +0300
-@@ -83,7 +83,7 @@
+Index: texlive-20080816-source/libs/xpdf/goo/gfile.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/gfile.cc
++++ texlive-20080816-source/libs/xpdf/goo/gfile.cc
+@@ -83,7 +83,7 @@ GString *getHomeDir() {
  
  #elif defined(__EMX__) || defined(WIN32)
    //---------- OS/2+EMX and Win32 ----------
@@ -1019,7 +1035,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
    GString *ret;
  
    if ((s = getenv("HOME")))
-@@ -102,7 +102,7 @@
+@@ -102,7 +102,7 @@ GString *getHomeDir() {
  
  #else
    //---------- Unix ----------
@@ -1028,7 +1044,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
    struct passwd *pw;
    GString *ret;
  
-@@ -140,7 +140,7 @@
+@@ -140,7 +140,7 @@ GString *getCurrentDir() {
    return new GString();
  }
  
@@ -1037,7 +1053,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
  #if defined(VMS)
    //---------- VMS ----------
    //~ this should handle everything necessary for file
-@@ -306,7 +306,7 @@
+@@ -306,7 +306,7 @@ GString *appendToPath(GString *path, cha
  #endif
  }
  
@@ -1046,7 +1062,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
  #ifdef VMS
    //---------- VMS ----------
    char *p;
-@@ -355,7 +355,7 @@
+@@ -355,7 +355,7 @@ GString *grabPath(char *fileName) {
  #endif
  }
  
@@ -1055,7 +1071,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
  #ifdef VMS
    //---------- VMS ----------
    return strchr(path, ':') ||
-@@ -461,7 +461,7 @@
+@@ -461,7 +461,7 @@ GString *makePathAbsolute(GString *path)
  #endif
  }
  
@@ -1064,7 +1080,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
  #ifdef WIN32
    //~ should implement this, but it's (currently) only used in xpdf
    return 0;
-@@ -476,10 +476,10 @@
+@@ -476,10 +476,10 @@ time_t getModTime(char *fileName) {
  }
  
  #ifndef PDF_PARSER_ONLY
@@ -1077,7 +1093,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
    GString *s, *s2;
    char buf[32];
    FILE *f2;
-@@ -586,7 +586,7 @@
+@@ -586,7 +586,7 @@ GBool openTempFile(GString **name, FILE 
  }
  #endif
  
@@ -1086,7 +1102,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
  #ifdef VMS
    return system(cmd) ? gTrue : gFalse;
  #else
-@@ -627,7 +627,7 @@
+@@ -627,7 +627,7 @@ char *getLine(char *buf, int size, FILE 
  // GDir and GDirEntry
  //------------------------------------------------------------------------
  
@@ -1095,7 +1111,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
  #ifdef VMS
    char *p;
  #elif defined(WIN32)
-@@ -666,7 +666,7 @@
+@@ -666,7 +666,7 @@ GDirEntry::~GDirEntry() {
    delete name;
  }
  
@@ -1104,10 +1120,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.cc texlive-20080816-so
    path = new GString(name);
    doStat = doStatA;
  #if defined(WIN32)
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.h texlive-20080816-source/libs/xpdf/goo/gfile.h
---- texlive-20080816-source/libs/xpdf.orig/goo/gfile.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/goo/gfile.h	2008-11-21 16:54:13.000000000 +0300
-@@ -60,14 +60,14 @@
+Index: texlive-20080816-source/libs/xpdf/goo/gfile.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/gfile.h
++++ texlive-20080816-source/libs/xpdf/goo/gfile.h
+@@ -60,14 +60,14 @@ extern GString *getCurrentDir();
  
  // Append a file name to a path string.  <path> may be an empty
  // string, denoting the current directory).  Returns <path>.
@@ -1125,7 +1142,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.h texlive-20080816-sou
  
  // Make this path absolute by prepending current directory (if path is
  // relative) or prepending user's directory (if path starts with '~').
-@@ -75,7 +75,7 @@
+@@ -75,7 +75,7 @@ extern GString *makePathAbsolute(GString
  
  // Get the modification time for <fileName>.  Returns 0 if there is an
  // error.
@@ -1134,7 +1151,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.h texlive-20080816-sou
  
  // Create a temporary file and open it for writing.  If <ext> is not
  // NULL, it will be used as the file name extension.  Returns both the
-@@ -83,10 +83,10 @@
+@@ -83,10 +83,10 @@ extern time_t getModTime(char *fileName)
  // should be done to the returned file pointer; the file may be
  // reopened later for reading, but not for writing.  The <mode> string
  // should be "w" or "wb".  Returns true on success.
@@ -1147,7 +1164,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.h texlive-20080816-sou
  
  // Just like fgets, but handles Unix, Mac, and/or DOS end-of-line
  // conventions.
-@@ -99,7 +99,7 @@
+@@ -99,7 +99,7 @@ extern char *getLine(char *buf, int size
  class GDirEntry {
  public:
  
@@ -1156,7 +1173,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.h texlive-20080816-sou
    ~GDirEntry();
    GString *getName() { return name; }
    GBool isDir() { return dir; }
-@@ -113,7 +113,7 @@
+@@ -113,7 +113,7 @@ private:
  class GDir {
  public:
  
@@ -1165,10 +1182,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gfile.h texlive-20080816-sou
    ~GDir();
    GDirEntry *getNextEntry();
    void rewind();
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc texlive-20080816-source/libs/xpdf/goo/GHash.cc
---- texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/goo/GHash.cc	2008-11-21 18:02:24.000000000 +0300
-@@ -145,7 +145,7 @@
+Index: texlive-20080816-source/libs/xpdf/goo/GHash.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/GHash.cc
++++ texlive-20080816-source/libs/xpdf/goo/GHash.cc
+@@ -145,7 +145,7 @@ int GHash::lookupInt(GString *key) {
    return p->val.i;
  }
  
@@ -1177,7 +1195,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc texlive-20080816-so
    GHashBucket *p;
    int h;
  
-@@ -155,7 +155,7 @@
+@@ -155,7 +155,7 @@ void *GHash::lookup(char *key) {
    return p->val.p;
  }
  
@@ -1186,7 +1204,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc texlive-20080816-so
    GHashBucket *p;
    int h;
  
-@@ -211,7 +211,7 @@
+@@ -211,7 +211,7 @@ int GHash::removeInt(GString *key) {
    return val;
  }
  
@@ -1195,7 +1213,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc texlive-20080816-so
    GHashBucket *p;
    GHashBucket **q;
    void *val;
-@@ -234,7 +234,7 @@
+@@ -234,7 +234,7 @@ void *GHash::remove(char *key) {
    return val;
  }
  
@@ -1204,7 +1222,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc texlive-20080816-so
    GHashBucket *p;
    GHashBucket **q;
    int val;
-@@ -344,7 +344,7 @@
+@@ -344,7 +344,7 @@ GHashBucket *GHash::find(GString *key, i
    return NULL;
  }
  
@@ -1213,7 +1231,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc texlive-20080816-so
    GHashBucket *p;
  
    *h = hash(key);
-@@ -368,8 +368,8 @@
+@@ -368,8 +368,8 @@ int GHash::hash(GString *key) {
    return (int)(h % size);
  }
  
@@ -1224,10 +1242,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.cc texlive-20080816-so
    unsigned int h;
  
    h = 0;
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.h texlive-20080816-source/libs/xpdf/goo/GHash.h
---- texlive-20080816-source/libs/xpdf.orig/goo/GHash.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/goo/GHash.h	2008-11-21 18:01:31.000000000 +0300
-@@ -34,12 +34,12 @@
+Index: texlive-20080816-source/libs/xpdf/goo/GHash.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/GHash.h
++++ texlive-20080816-source/libs/xpdf/goo/GHash.h
+@@ -34,12 +34,12 @@ public:
    void replace(GString *key, int val);
    void *lookup(GString *key);
    int lookupInt(GString *key);
@@ -1244,7 +1263,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.h texlive-20080816-sou
    int getLength() { return len; }
    void startIter(GHashIter **iter);
    GBool getNext(GHashIter **iter, GString **key, void **val);
-@@ -50,9 +50,9 @@
+@@ -50,9 +50,9 @@ private:
  
    void expand();
    GHashBucket *find(GString *key, int *h);
@@ -1256,10 +1275,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GHash.h texlive-20080816-sou
  
    GBool deleteKeys;		// set if key strings should be deleted
    int size;			// number of buckets
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gmem.cc texlive-20080816-source/libs/xpdf/goo/gmem.cc
---- texlive-20080816-source/libs/xpdf.orig/goo/gmem.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/goo/gmem.cc	2008-11-21 16:34:54.000000000 +0300
-@@ -255,7 +255,7 @@
+Index: texlive-20080816-source/libs/xpdf/goo/gmem.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/gmem.cc
++++ texlive-20080816-source/libs/xpdf/goo/gmem.cc
+@@ -255,7 +255,7 @@ void gMemReport(FILE *f) {
  }
  #endif
  
@@ -1268,10 +1288,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gmem.cc texlive-20080816-sou
    char *s1;
  
    s1 = (char *)gmalloc(strlen(s) + 1);
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gmem.h texlive-20080816-source/libs/xpdf/goo/gmem.h
---- texlive-20080816-source/libs/xpdf.orig/goo/gmem.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/goo/gmem.h	2008-11-21 16:34:49.000000000 +0300
-@@ -70,7 +70,7 @@
+Index: texlive-20080816-source/libs/xpdf/goo/gmem.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/gmem.h
++++ texlive-20080816-source/libs/xpdf/goo/gmem.h
+@@ -70,7 +70,7 @@ extern void gMemReport(FILE *f);
  /*
   * Allocate memory and copy a string into it.
   */
@@ -1280,10 +1301,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/gmem.h texlive-20080816-sour
  
  #ifdef __cplusplus
  }
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.cc texlive-20080816-source/libs/xpdf/goo/GString.cc
---- texlive-20080816-source/libs/xpdf.orig/goo/GString.cc	2008-05-08 17:40:41.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/goo/GString.cc	2008-11-21 17:56:15.000000000 +0300
-@@ -101,7 +101,7 @@
+Index: texlive-20080816-source/libs/xpdf/goo/GString.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/GString.cc
++++ texlive-20080816-source/libs/xpdf/goo/GString.cc
+@@ -101,7 +101,7 @@ enum GStringFormatType {
    fmtSpace
  };
  
@@ -1292,7 +1314,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.cc texlive-20080816-
    "d", "x", "o", "b", "ud", "ux", "uo", "ub",
    "ld", "lx", "lo", "lb", "uld", "ulx", "ulo", "ulb",
    "f", "g",
-@@ -192,7 +192,7 @@
+@@ -192,7 +192,7 @@ GString *GString::fromInt(int x) {
    return new GString(p, len);
  }
  
@@ -1301,7 +1323,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.cc texlive-20080816-
    va_list argList;
    GString *s;
  
-@@ -203,7 +203,7 @@
+@@ -203,7 +203,7 @@ GString *GString::format(char *fmt, ...)
    return s;
  }
  
@@ -1310,7 +1332,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.cc texlive-20080816-
    GString *s;
  
    s = new GString();
-@@ -254,7 +254,7 @@
+@@ -254,7 +254,7 @@ GString *GString::append(const char *str
    return this;
  }
  
@@ -1319,7 +1341,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.cc texlive-20080816-
    va_list argList;
  
    va_start(argList, fmt);
-@@ -263,7 +263,7 @@
+@@ -263,7 +263,7 @@ GString *GString::appendf(char *fmt, ...
    return this;
  }
  
@@ -1328,7 +1350,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.cc texlive-20080816-
    GStringFormatArg *args;
    int argsLen, argsSize;
    GStringFormatArg arg;
-@@ -272,7 +272,8 @@
+@@ -272,7 +272,8 @@ GString *GString::appendfv(char *fmt, va
    GStringFormatType ft;
    char buf[65];
    int len, i;
@@ -1338,10 +1360,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.cc texlive-20080816-
  
    argsLen = 0;
    argsSize = 8;
-diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.h texlive-20080816-source/libs/xpdf/goo/GString.h
---- texlive-20080816-source/libs/xpdf.orig/goo/GString.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/goo/GString.h	2008-11-21 17:54:17.000000000 +0300
-@@ -67,8 +67,8 @@
+Index: texlive-20080816-source/libs/xpdf/goo/GString.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/goo/GString.h
++++ texlive-20080816-source/libs/xpdf/goo/GString.h
+@@ -67,8 +67,8 @@ public:
    //     t -- GString *
    //     w -- blank space; arg determines width
    // To get literal curly braces, use {{ or }}.
@@ -1352,7 +1375,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.h texlive-20080816-s
  
    // Destructor.
    ~GString();
-@@ -95,8 +95,8 @@
+@@ -95,8 +95,8 @@ public:
    GString *append(const char *str, int lengthA);
  
    // Append a formatted string.
@@ -1363,10 +1386,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/goo/GString.h texlive-20080816-s
  
    // Insert a character or string.
    GString *insert(int i, char c);
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.cc texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.cc	2008-11-21 13:56:48.000000000 +0300
-@@ -39,7 +39,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/BuiltinFont.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.cc
+@@ -39,7 +39,7 @@ BuiltinFontWidths::~BuiltinFontWidths() 
    gfree(tab);
  }
  
@@ -1375,7 +1399,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.cc texlive-2008
    int h;
    BuiltinFontWidth *p;
  
-@@ -53,8 +53,8 @@
+@@ -53,8 +53,8 @@ GBool BuiltinFontWidths::getWidth(char *
    return gFalse;
  }
  
@@ -1386,10 +1410,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.cc texlive-2008
    unsigned int h;
  
    h = 0;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.h texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.h	2008-11-21 17:16:00.000000000 +0300
-@@ -23,8 +23,8 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/BuiltinFont.h
++++ texlive-20080816-source/libs/xpdf/xpdf/BuiltinFont.h
+@@ -23,8 +23,8 @@ class BuiltinFontWidths;
  //------------------------------------------------------------------------
  
  struct BuiltinFont {
@@ -1400,7 +1425,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.h texlive-20080
    short ascent;
    short descent;
    short bbox[4];
-@@ -34,7 +34,7 @@
+@@ -34,7 +34,7 @@ struct BuiltinFont {
  //------------------------------------------------------------------------
  
  struct BuiltinFontWidth {
@@ -1409,7 +1434,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.h texlive-20080
    Gushort width;
    BuiltinFontWidth *next;
  };
-@@ -44,11 +44,11 @@
+@@ -44,11 +44,11 @@ public:
  
    BuiltinFontWidths(BuiltinFontWidth *widths, int sizeA);
    ~BuiltinFontWidths();
@@ -1423,10 +1448,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/BuiltinFont.h texlive-20080
  
    BuiltinFontWidth **tab;
    int size;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CharCodeToUnicode.cc texlive-20080816-source/libs/xpdf/xpdf/CharCodeToUnicode.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/CharCodeToUnicode.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/CharCodeToUnicode.cc	2008-11-21 16:51:29.000000000 +0300
-@@ -189,7 +189,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/CharCodeToUnicode.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/CharCodeToUnicode.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/CharCodeToUnicode.cc
+@@ -189,7 +189,7 @@ CharCodeToUnicode *CharCodeToUnicode::ma
  
  CharCodeToUnicode *CharCodeToUnicode::parseCMap(GString *buf, int nBits) {
    CharCodeToUnicode *ctu;
@@ -1435,7 +1461,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CharCodeToUnicode.cc texliv
  
    ctu = new CharCodeToUnicode(NULL);
    p = buf->getCString();
-@@ -198,7 +198,7 @@
+@@ -198,7 +198,7 @@ CharCodeToUnicode *CharCodeToUnicode::pa
  }
  
  void CharCodeToUnicode::mergeCMap(GString *buf, int nBits) {
@@ -1444,10 +1470,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CharCodeToUnicode.cc texliv
  
    p = buf->getCString();
    parseCMap1(&getCharFromString, &p, nBits);
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.cc texlive-20080816-source/libs/xpdf/xpdf/CMap.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/CMap.cc	2008-11-21 17:42:34.000000000 +0300
-@@ -184,7 +184,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/CMap.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/CMap.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/CMap.cc
+@@ -184,7 +184,7 @@ CMap::CMap(GString *collectionA, GString
  #endif
  }
  
@@ -1456,7 +1483,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.cc texlive-20080816-so
    GString *useNameStr;
    CMap *subCMap;
  
-@@ -327,7 +327,7 @@
+@@ -327,7 +327,7 @@ GBool CMap::match(GString *collectionA, 
    return !collection->cmp(collectionA) && !cMapName->cmp(cMapNameA);
  }
  
@@ -1465,10 +1492,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.cc texlive-20080816-so
    CMapVectorEntry *vec;
    int n, i;
  
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.h texlive-20080816-source/libs/xpdf/xpdf/CMap.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/CMap.h	2008-11-21 17:42:44.000000000 +0300
-@@ -51,7 +51,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/CMap.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/CMap.h
++++ texlive-20080816-source/libs/xpdf/xpdf/CMap.h
+@@ -51,7 +51,7 @@ public:
    // Return the CID corresponding to the character code starting at
    // <s>, which contains <len> bytes.  Sets *<nUsed> to the number of
    // bytes used by the char code.
@@ -1477,7 +1505,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.h texlive-20080816-sou
  
    // Return the writing mode (0=horizontal, 1=vertical).
    int getWMode() { return wMode; }
-@@ -60,7 +60,7 @@
+@@ -60,7 +60,7 @@ private:
  
    CMap(GString *collectionA, GString *cMapNameA);
    CMap(GString *collectionA, GString *cMapNameA, int wModeA);
@@ -1486,10 +1514,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/CMap.h texlive-20080816-sou
    void copyVector(CMapVectorEntry *dest, CMapVectorEntry *src);
    void addCodeSpace(CMapVectorEntry *vec, Guint start, Guint end,
  		    Guint nBytes);
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.cc texlive-20080816-source/libs/xpdf/xpdf/Dict.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/Dict.cc	2008-11-21 16:51:02.000000000 +0300
-@@ -34,13 +34,13 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Dict.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Dict.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/Dict.cc
+@@ -34,13 +34,13 @@ Dict::~Dict() {
    int i;
  
    for (i = 0; i < length; ++i) {
@@ -1505,7 +1534,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.cc texlive-20080816-so
    if (length == size) {
      if (length == 0) {
        size = 8;
-@@ -54,7 +54,7 @@
+@@ -54,7 +54,7 @@ void Dict::add(char *key, Object *val) {
    ++length;
  }
  
@@ -1514,7 +1543,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.cc texlive-20080816-so
    int i;
  
    for (i = 0; i < length; ++i) {
-@@ -64,25 +64,25 @@
+@@ -64,25 +64,25 @@ inline DictEntry *Dict::find(char *key) 
    return NULL;
  }
  
@@ -1544,9 +1573,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.cc texlive-20080816-so
    return entries[i].key;
  }
  
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.h texlive-20080816-source/libs/xpdf/xpdf/Dict.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/Dict.h	2008-11-21 16:40:19.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/Dict.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Dict.h
++++ texlive-20080816-source/libs/xpdf/xpdf/Dict.h
 @@ -22,7 +22,7 @@
  //------------------------------------------------------------------------
  
@@ -1556,7 +1586,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.h texlive-20080816-sou
    Object val;
  };
  
-@@ -43,18 +43,18 @@
+@@ -43,18 +43,18 @@ public:
    int getLength() { return length; }
  
    // Add an entry.  NB: does not copy key.
@@ -1580,7 +1610,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.h texlive-20080816-sou
    Object *getVal(int i, Object *obj);
    Object *getValNF(int i, Object *obj);
  
-@@ -71,7 +71,7 @@
+@@ -71,7 +71,7 @@ private:
    int length;			// number of entries in dictionary
    int ref;			// reference count
  
@@ -1589,9 +1619,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Dict.h texlive-20080816-sou
  };
  
  #endif
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Error.cc texlive-20080816-source/libs/xpdf/xpdf/Error.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Error.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/Error.cc	2008-11-21 16:47:31.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/Error.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Error.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/Error.cc
 @@ -18,7 +18,7 @@
  #include "GlobalParams.h"
  #include "Error.h"
@@ -1601,9 +1632,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Error.cc texlive-20080816-s
    va_list args;
  
    // NB: this can be called before the globalParams object is created
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Error.h texlive-20080816-source/libs/xpdf/xpdf/Error.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Error.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/Error.h	2008-11-21 16:46:51.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/Error.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Error.h
++++ texlive-20080816-source/libs/xpdf/xpdf/Error.h
 @@ -18,6 +18,6 @@
  #include <stdio.h>
  #include "config.h"
@@ -1612,9 +1644,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Error.h texlive-20080816-so
 +extern void CDECL error(int pos, const char *msg, ...);
  
  #endif
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.cc	2008-11-21 17:14:54.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/FontEncodingTables.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.cc
 @@ -10,7 +10,7 @@
  #include <stdlib.h>
  #include "FontEncodingTables.h"
@@ -1624,7 +1657,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texli
    NULL,
    NULL,
    NULL,
-@@ -269,7 +269,7 @@
+@@ -269,7 +269,7 @@ char *macRomanEncoding[256] = {
    "caron"
  };
  
@@ -1633,7 +1666,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texli
    NULL,
    NULL,
    NULL,
-@@ -528,7 +528,7 @@
+@@ -528,7 +528,7 @@ char *macExpertEncoding[256] = {
    NULL
  };
  
@@ -1642,7 +1675,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texli
    NULL,
    NULL,
    NULL,
-@@ -787,7 +787,7 @@
+@@ -787,7 +787,7 @@ char *winAnsiEncoding[256] = {
    "ydieresis"
  };
  
@@ -1651,7 +1684,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texli
    NULL,
    NULL,
    NULL,
-@@ -1046,7 +1046,7 @@
+@@ -1046,7 +1046,7 @@ char *standardEncoding[256] = {
    NULL
  };
  
@@ -1660,7 +1693,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texli
    NULL,
    NULL,
    NULL,
-@@ -1305,7 +1305,7 @@
+@@ -1305,7 +1305,7 @@ char *expertEncoding[256] = {
    "Ydieresissmall"
  };
  
@@ -1669,7 +1702,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texli
    NULL,
    NULL,
    NULL,
-@@ -1564,7 +1564,7 @@
+@@ -1564,7 +1564,7 @@ char *symbolEncoding[256] = {
    NULL
  };
  
@@ -1678,9 +1711,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.cc texli
    NULL,
    NULL,
    NULL,
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.h texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.h	2008-11-21 17:14:25.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/FontEncodingTables.h
++++ texlive-20080816-source/libs/xpdf/xpdf/FontEncodingTables.h
 @@ -9,12 +9,12 @@
  #ifndef FONTENCODINGTABLES_H
  #define FONTENCODINGTABLES_H
@@ -1701,10 +1735,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/FontEncodingTables.h texliv
 +extern const char *zapfDingbatsEncoding[];
  
  #endif
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Function.cc texlive-20080816-source/libs/xpdf/xpdf/Function.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Function.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/Function.cc	2008-11-21 17:03:35.000000000 +0300
-@@ -749,7 +749,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Function.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Function.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/Function.cc
+@@ -749,7 +749,7 @@ enum PSOp {
  // Note: 'if' and 'ifelse' are parsed separately.
  // The rest are listed here in alphabetical order.
  // The index in this table is equivalent to the entry in PSOp.
@@ -1713,7 +1748,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Function.cc texlive-2008081
    "abs",
    "add",
    "and",
-@@ -1086,7 +1086,7 @@
+@@ -1086,7 +1086,7 @@ void PostScriptFunction::transform(doubl
  
  GBool PostScriptFunction::parseCode(Stream *str, int *codePtr) {
    GString *tok;
@@ -1722,9 +1757,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Function.cc texlive-2008081
    GBool isReal;
    int opPtr, elsePtr;
    int a, b, mid, cmp;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816-source/libs/xpdf/xpdf/GfxFont.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/GfxFont.cc	2008-11-21 17:41:14.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/GfxFont.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/GfxFont.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/GfxFont.cc
 @@ -33,8 +33,8 @@
  //------------------------------------------------------------------------
  
@@ -1736,7 +1772,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
  };
  
  // Acrobat 4.0 and earlier substituted Base14-compatible fonts without
-@@ -100,7 +100,7 @@
+@@ -100,7 +100,7 @@ static StdFontMapEntry stdFontMap[] = {
  // GfxFont
  //------------------------------------------------------------------------
  
@@ -1745,7 +1781,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    GString *nameA;
    GfxFont *font;
    Object obj1;
-@@ -136,7 +136,7 @@
+@@ -136,7 +136,7 @@ GfxFont *GfxFont::makeFont(XRef *xref, c
    return font;
  }
  
@@ -1754,7 +1790,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    ok = gFalse;
    tag = new GString(tagA);
    id = idA;
-@@ -331,8 +331,8 @@
+@@ -331,8 +331,8 @@ CharCodeToUnicode *GfxFont::readToUnicod
  }
  
  void GfxFont::findExtFontFile() {
@@ -1765,7 +1801,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
  
    if (name) {
      if (type == fontType1) {
-@@ -343,7 +343,7 @@
+@@ -343,7 +343,7 @@ void GfxFont::findExtFontFile() {
    }
  }
  
@@ -1774,7 +1810,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    FILE *f;
    char *buf;
  
-@@ -363,7 +363,7 @@
+@@ -363,7 +363,7 @@ char *GfxFont::readExtFontFile(int *len)
    return buf;
  }
  
@@ -1783,7 +1819,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    char *buf;
    Object obj1, obj2;
    Stream *str;
-@@ -404,20 +404,20 @@
+@@ -404,20 +404,20 @@ char *GfxFont::readEmbFontFile(XRef *xre
  // Gfx8BitFont
  //------------------------------------------------------------------------
  
@@ -1808,7 +1844,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    GBool missing, hex;
    Unicode toUnicode[256];
    CharCodeToUnicode *utu, *ctu2;
-@@ -627,7 +627,7 @@
+@@ -627,7 +627,7 @@ Gfx8BitFont::Gfx8BitFont(XRef *xref, cha
      }
    }
    if (buf) {
@@ -1817,7 +1853,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    }
  
    // get default base encoding
-@@ -677,7 +677,7 @@
+@@ -677,7 +677,7 @@ Gfx8BitFont::Gfx8BitFont(XRef *xref, cha
  	} else if (obj3.isName()) {
  	  if (code >= 0 && code < 256) {
  	    if (encFree[code]) {
@@ -1826,7 +1862,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
  	    }
  	    enc[code] = copyString(obj3.getName());
  	    encFree[code] = gTrue;
-@@ -895,7 +895,7 @@
+@@ -895,7 +895,7 @@ Gfx8BitFont::~Gfx8BitFont() {
  
    for (i = 0; i < 256; ++i) {
      if (encFree[i] && enc[i]) {
@@ -1835,7 +1871,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
      }
    }
    ctu->decRefCnt();
-@@ -907,7 +907,7 @@
+@@ -907,7 +907,7 @@ Gfx8BitFont::~Gfx8BitFont() {
    }
  }
  
@@ -1844,7 +1880,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
  			     Unicode *u, int uSize, int *uLen,
  			     double *dx, double *dy, double *ox, double *oy) {
    CharCode c;
-@@ -929,7 +929,7 @@
+@@ -929,7 +929,7 @@ Gushort *Gfx8BitFont::getCodeToGIDMap(Fo
    int cmapPlatform, cmapEncoding;
    int unicodeCmap, macRomanCmap, msSymbolCmap, cmap;
    GBool useMacRoman, useUnicode;
@@ -1853,7 +1889,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    Unicode u;
    int code, i, n;
  
-@@ -1074,7 +1074,7 @@
+@@ -1074,7 +1074,7 @@ static int CDECL cmpWidthExcepV(const vo
           ((GfxFontCIDWidthExcepV *)w2)->first;
  }
  
@@ -1862,7 +1898,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
  		       Dict *fontDict):
    GfxFont(tagA, idA, nameA)
  {
-@@ -1411,7 +1411,7 @@
+@@ -1411,7 +1411,7 @@ GfxCIDFont::~GfxCIDFont() {
    }
  }
  
@@ -1871,7 +1907,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
  			    Unicode *u, int uSize, int *uLen,
  			    double *dx, double *dy, double *ox, double *oy) {
    CID cid;
-@@ -1556,7 +1556,7 @@
+@@ -1556,7 +1556,7 @@ GfxFontDict::~GfxFontDict() {
    gfree(fonts);
  }
  
@@ -1880,10 +1916,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.cc texlive-20080816
    int i;
  
    for (i = 0; i < numFonts; ++i) {
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-source/libs/xpdf/xpdf/GfxFont.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/GfxFont.h	2008-11-21 17:38:32.000000000 +0300
-@@ -89,9 +89,9 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/GfxFont.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/GfxFont.h
++++ texlive-20080816-source/libs/xpdf/xpdf/GfxFont.h
+@@ -89,9 +89,9 @@ class GfxFont {
  public:
  
    // Build a GfxFont object.
@@ -1895,7 +1932,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
  
    virtual ~GfxFont();
  
-@@ -104,7 +104,7 @@
+@@ -104,7 +104,7 @@ public:
    Ref *getID() { return &id; }
  
    // Does this font match the tag?
@@ -1904,7 +1941,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
  
    // Get base font name.
    GString *getName() { return name; }
-@@ -152,8 +152,8 @@
+@@ -152,8 +152,8 @@ public:
    virtual int getWMode() { return 0; }
  
    // Read an external or embedded font file into a buffer.
@@ -1915,7 +1952,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
  
    // Get the next char from a string <s> of <len> bytes, returning the
    // char <code>, its Unicode mapping <u>, its displacement vector
-@@ -161,7 +161,7 @@
+@@ -161,7 +161,7 @@ public:
    // is the number of entries available in <u>, and <uLen> is set to
    // the number actually used.  Returns the number of bytes used by
    // the char code.
@@ -1924,7 +1961,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
  			  Unicode *u, int uSize, int *uLen,
  			  double *dx, double *dy, double *ox, double *oy) = 0;
  
-@@ -196,23 +196,23 @@
+@@ -196,23 +196,23 @@ protected:
  class Gfx8BitFont: public GfxFont {
  public:
  
@@ -1952,7 +1989,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
  
    // Returns true if the PDF font specified an encoding.
    GBool getHasEncoding() { return hasEncoding; }
-@@ -238,7 +238,7 @@
+@@ -238,7 +238,7 @@ public:
  
  private:
  
@@ -1961,7 +1998,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
    char encFree[256];		// boolean for each char name: if set,
  				//   the string is malloc'ed
    CharCodeToUnicode *ctu;	// char code --> Unicode
-@@ -256,14 +256,14 @@
+@@ -256,14 +256,14 @@ private:
  class GfxCIDFont: public GfxFont {
  public:
  
@@ -1978,7 +2015,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
  			  Unicode *u, int uSize, int *uLen,
  			  double *dx, double *dy, double *ox, double *oy);
  
-@@ -305,7 +305,7 @@
+@@ -305,7 +305,7 @@ public:
    ~GfxFontDict();
  
    // Get the specified font.
@@ -1987,10 +2024,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxFont.h texlive-20080816-
  
    // Iterative access.
    int getNumFonts() { return numFonts; }
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.cc texlive-20080816-source/libs/xpdf/xpdf/GfxState.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/GfxState.cc	2008-11-21 17:12:54.000000000 +0300
-@@ -35,7 +35,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/GfxState.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/GfxState.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/GfxState.cc
+@@ -35,7 +35,7 @@ static inline double clip01(double x) {
  //------------------------------------------------------------------------
  
  struct GfxBlendModeInfo {
@@ -1999,7 +2037,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.cc texlive-2008081
    GfxBlendMode mode;
  };
  
-@@ -66,7 +66,7 @@
+@@ -66,7 +66,7 @@ static GfxBlendModeInfo gfxBlendModeName
  
  // NB: This must match the GfxColorSpaceMode enum defined in
  // GfxState.h
@@ -2008,7 +2046,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.cc texlive-2008081
    "DeviceGray",
    "CalGray",
    "DeviceRGB",
-@@ -157,7 +157,7 @@
+@@ -157,7 +157,7 @@ int GfxColorSpace::getNumColorSpaceModes
    return nGfxColorSpaceModes;
  }
  
@@ -2017,7 +2055,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.cc texlive-2008081
    return gfxColorSpaceModeNames[idx];
  }
  
-@@ -949,7 +949,7 @@
+@@ -949,7 +949,7 @@ GfxColorSpace *GfxIndexedColorSpace::par
    int indexHighA;
    Object obj1;
    int x;
@@ -2026,10 +2064,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.cc texlive-2008081
    int n, i, j;
  
    if (arr->getLength() != 4) {
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.h texlive-20080816-source/libs/xpdf/xpdf/GfxState.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/GfxState.h	2008-11-21 17:08:48.000000000 +0300
-@@ -164,7 +164,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/GfxState.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/GfxState.h
++++ texlive-20080816-source/libs/xpdf/xpdf/GfxState.h
+@@ -164,7 +164,7 @@ public:
    static int getNumColorSpaceModes();
  
    // Return the name of the <idx>th color space mode.
@@ -2038,10 +2077,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GfxState.h texlive-20080816
  
  private:
  };
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc	2008-05-08 17:40:41.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.cc	2008-11-21 17:29:19.000000000 +0300
-@@ -117,9 +117,9 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/GlobalParams.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.cc
+@@ -117,9 +117,9 @@ extern XpdfPluginVecTable xpdfPluginVecT
  //------------------------------------------------------------------------
  
  static struct {
@@ -2054,7 +2094,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  } displayFontTab[] = {
    {"Courier",               "n022003l.pfb", "cour.ttf"},
    {"Courier-Bold",          "n022004l.pfb", "courbd.ttf"},
-@@ -139,13 +139,13 @@
+@@ -139,13 +139,13 @@ static struct {
  };
  
  #ifdef WIN32
@@ -2070,7 +2110,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    "/usr/share/ghostscript/fonts",
    "/usr/local/share/ghostscript/fonts",
    "/usr/share/fonts/default/Type1",
-@@ -205,7 +205,7 @@
+@@ -205,7 +205,7 @@ public:
    GBool bold, italic;
  
    static WinFontInfo *make(GString *nameA, GBool boldA, GBool italicA,
@@ -2079,7 +2119,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    WinFontInfo(GString *nameA, GBool boldA, GBool italicA,
  	      GString *fileNameA);
    virtual ~WinFontInfo();
-@@ -213,7 +213,7 @@
+@@ -213,7 +213,7 @@ public:
  };
  
  WinFontInfo *WinFontInfo::make(GString *nameA, GBool boldA, GBool italicA,
@@ -2088,7 +2128,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GString *regName;
    GString *fileNameA;
    char buf[MAX_PATH];
-@@ -280,7 +280,7 @@
+@@ -280,7 +280,7 @@ GBool WinFontInfo::equals(WinFontInfo *f
  class WinFontList {
  public:
  
@@ -2097,7 +2137,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    ~WinFontList();
    WinFontInfo *find(GString *font);
  
-@@ -297,12 +297,12 @@
+@@ -297,12 +297,12 @@ private:
    GList *fonts;			// [WinFontInfo]
    HDC dc;			// (only used during enumeration)
    HKEY regKey;			// (only used during enumeration)
@@ -2113,7 +2153,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  
    fonts = new GList();
    dc = GetDC(NULL);
-@@ -463,7 +463,7 @@
+@@ -463,7 +463,7 @@ PSFontParam::~PSFontParam() {
  // KeyBinding
  //------------------------------------------------------------------------
  
@@ -2122,7 +2162,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    code = codeA;
    mods = modsA;
    context = contextA;
-@@ -472,7 +472,7 @@
+@@ -472,7 +472,7 @@ KeyBinding::KeyBinding(int codeA, int mo
  }
  
  KeyBinding::KeyBinding(int codeA, int modsA, int contextA,
@@ -2131,7 +2171,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    code = codeA;
    mods = modsA;
    context = contextA;
-@@ -501,7 +501,7 @@
+@@ -501,7 +501,7 @@ KeyBinding::~KeyBinding() {
  class Plugin {
  public:
  
@@ -2140,7 +2180,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    ~Plugin();
  
  private:
-@@ -515,7 +515,7 @@
+@@ -515,7 +515,7 @@ private:
  #endif
  };
  
@@ -2149,7 +2189,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GString *path;
    Plugin *plugin;
    XpdfPluginVecTable *vt;
-@@ -677,7 +677,7 @@
+@@ -677,7 +677,7 @@ GlobalParams::GlobalParams() {
    displayCIDFonts = new GHash();
    displayNamedCIDFonts = new GHash();
  #if HAVE_PAPER_H
@@ -2158,7 +2198,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    const struct paper *paperType;
    paperinit();
    if ((paperName = systempapername())) {
-@@ -771,7 +771,7 @@
+@@ -771,7 +771,7 @@ GlobalParams::GlobalParams() {
  
  }
  
@@ -2167,7 +2207,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    UnicodeMap *map;
    GString *fileName;
    FILE *f;
-@@ -811,7 +811,7 @@
+@@ -811,7 +811,7 @@ GlobalParams::GlobalParams(char *cfgFile
    displayCIDFonts = new GHash();
    displayNamedCIDFonts = new GHash();
  #if HAVE_PAPER_H
@@ -2176,7 +2216,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    const struct paper *paperType;
    paperinit();
    if ((paperName = systempapername())) {
-@@ -1096,7 +1096,7 @@
+@@ -1096,7 +1096,7 @@ void GlobalParams::parseFile(GString *fi
    }
  }
  
@@ -2185,7 +2225,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GList *tokens;
    GString *cmd, *incFile;
    char *p1, *p2;
-@@ -1531,7 +1531,7 @@
+@@ -1531,7 +1531,7 @@ void GlobalParams::parsePSFont(GList *to
    psFonts->add(param->pdfFontName, param);
  }
  
@@ -2194,7 +2234,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  				 GList *tokens, GString *fileName, int line) {
    PSFontParam *param;
    int wMode;
-@@ -1692,9 +1692,9 @@
+@@ -1692,9 +1692,9 @@ void GlobalParams::parseUnbind(GList *to
  
  GBool GlobalParams::parseKey(GString *modKeyStr, GString *contextStr,
  			     int *code, int *mods, int *context,
@@ -2206,7 +2246,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  
    *mods = xpdfKeyModNone;
    p0 = modKeyStr->getCString();
-@@ -1821,7 +1821,7 @@
+@@ -1821,7 +1821,7 @@ GBool GlobalParams::parseKey(GString *mo
  }
  #endif
  
@@ -2215,7 +2255,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  				GList *tokens, GString *fileName, int line) {
    if (tokens->getLength() != 2) {
      error(-1, "Bad '%s' config file command (%s:%d)",
-@@ -1834,7 +1834,7 @@
+@@ -1834,7 +1834,7 @@ void GlobalParams::parseCommand(char *cm
    *val = ((GString *)tokens->get(1))->copy();
  }
  
@@ -2224,7 +2264,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  			      GList *tokens, GString *fileName, int line) {
    GString *tok;
  
-@@ -1850,7 +1850,7 @@
+@@ -1850,7 +1850,7 @@ void GlobalParams::parseYesNo(char *cmdN
    }
  }
  
@@ -2233,7 +2273,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    if (!strcmp(token, "yes")) {
      *flag = gTrue;
    } else if (!strcmp(token, "no")) {
-@@ -1861,7 +1861,7 @@
+@@ -1861,7 +1861,7 @@ GBool GlobalParams::parseYesNo2(char *to
    return gTrue;
  }
  
@@ -2242,7 +2282,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  				GList *tokens, GString *fileName, int line) {
    GString *tok;
    int i;
-@@ -1892,7 +1892,7 @@
+@@ -1892,7 +1892,7 @@ void GlobalParams::parseInteger(char *cm
    *val = atoi(tok->getCString());
  }
  
@@ -2251,7 +2291,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  			      GList *tokens, GString *fileName, int line) {
    GString *tok;
    int i;
-@@ -1992,12 +1992,12 @@
+@@ -1992,12 +1992,12 @@ GlobalParams::~GlobalParams() {
  
  //------------------------------------------------------------------------
  
@@ -2266,7 +2306,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GString *fontName;
    GString *fileName;
  #ifdef WIN32
-@@ -2109,7 +2109,7 @@
+@@ -2109,7 +2109,7 @@ void GlobalParams::setupBaseFonts(char *
  // accessors
  //------------------------------------------------------------------------
  
@@ -2275,7 +2315,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    // no need to lock - macRomanReverseMap is constant
    return macRomanReverseMap->lookup(charName);
  }
-@@ -2123,7 +2123,7 @@
+@@ -2123,7 +2123,7 @@ GString *GlobalParams::getBaseDir() {
    return s;
  }
  
@@ -2284,7 +2324,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    // no need to lock - nameToUnicode is constant
    return nameToUnicode->lookup(charName);
  }
-@@ -2456,9 +2456,9 @@
+@@ -2456,9 +2456,9 @@ GBool GlobalParams::getTextKeepTinyChars
    return tiny;
  }
  
@@ -2296,7 +2336,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    FILE *f;
    int i;
  
-@@ -2745,7 +2745,7 @@
+@@ -2745,7 +2745,7 @@ void GlobalParams::addDisplayFont(Displa
    unlockGlobalParams;
  }
  
@@ -2305,7 +2345,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    lockGlobalParams;
    if (psFile) {
      delete psFile;
-@@ -2754,7 +2754,7 @@
+@@ -2754,7 +2754,7 @@ void GlobalParams::setPSFile(char *file)
    unlockGlobalParams;
  }
  
@@ -2314,7 +2354,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    lockGlobalParams;
    if (!strcmp(size, "match")) {
      psPaperWidth = psPaperHeight = -1;
-@@ -2884,14 +2884,14 @@
+@@ -2884,14 +2884,14 @@ void GlobalParams::setPSASCIIHex(GBool h
    unlockGlobalParams;
  }
  
@@ -2331,7 +2371,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    lockGlobalParams;
    if (!strcmp(s, "unix")) {
      textEOL = eolUnix;
-@@ -2919,7 +2919,7 @@
+@@ -2919,7 +2919,7 @@ void GlobalParams::setTextKeepTinyChars(
    unlockGlobalParams;
  }
  
@@ -2340,7 +2380,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    lockGlobalParams;
    delete initialZoom;
    initialZoom = new GString(s);
-@@ -2932,7 +2932,7 @@
+@@ -2932,7 +2932,7 @@ void GlobalParams::setContinuousView(GBo
    unlockGlobalParams;
  }
  
@@ -2349,7 +2389,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GBool ok;
  
    lockGlobalParams;
-@@ -2941,7 +2941,7 @@
+@@ -2941,7 +2941,7 @@ GBool GlobalParams::setEnableT1lib(char 
    return ok;
  }
  
@@ -2358,7 +2398,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GBool ok;
  
    lockGlobalParams;
-@@ -2951,7 +2951,7 @@
+@@ -2951,7 +2951,7 @@ GBool GlobalParams::setEnableFreeType(ch
  }
  
  
@@ -2367,7 +2407,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GBool ok;
  
    lockGlobalParams;
-@@ -2960,7 +2960,7 @@
+@@ -2960,7 +2960,7 @@ GBool GlobalParams::setAntialias(char *s
    return ok;
  }
  
@@ -2376,7 +2416,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    GBool ok;
  
    lockGlobalParams;
-@@ -3037,7 +3037,7 @@
+@@ -3037,7 +3037,7 @@ void GlobalParams::addSecurityHandler(Xp
  #endif
  }
  
@@ -2385,7 +2425,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
  #ifdef ENABLE_PLUGINS
    XpdfSecurityHandler *hdlr;
    int i;
-@@ -3075,7 +3075,7 @@
+@@ -3075,7 +3075,7 @@ XpdfSecurityHandler *GlobalParams::getSe
  // plugins
  //------------------------------------------------------------------------
  
@@ -2394,10 +2434,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.cc texlive-200
    Plugin *plugin;
  
    if (!(plugin = Plugin::load(type, name))) {
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h	2008-05-08 17:40:41.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.h	2008-11-21 17:27:00.000000000 +0300
-@@ -172,8 +172,8 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/GlobalParams.h
++++ texlive-20080816-source/libs/xpdf/xpdf/GlobalParams.h
+@@ -172,8 +172,8 @@ public:
  				//   together)
    GList *cmds;			// list of commands [GString]
  
@@ -2408,7 +2449,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
    KeyBinding(int codeA, int modsA, int contextA, GList *cmdsA);
    ~KeyBinding();
  };
-@@ -232,26 +232,26 @@
+@@ -232,26 +232,26 @@ public:
  
    // Initialize the global parameters by attempting to read a config
    // file.
@@ -2441,7 +2482,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
    UnicodeMap *getResidentUnicodeMap(GString *encodingName);
    FILE *getUnicodeMapFile(GString *encodingName);
    FILE *findCMapFile(GString *collection, GString *cMapName);
-@@ -281,7 +281,7 @@
+@@ -281,7 +281,7 @@ public:
    EndOfLineKind getTextEOL();
    GBool getTextPageBreaks();
    GBool getTextKeepTinyChars();
@@ -2450,7 +2491,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
    GString *getInitialZoom();
    GBool getContinuousView();
    GBool getEnableT1lib();
-@@ -314,8 +314,8 @@
+@@ -314,8 +314,8 @@ public:
    //----- functions to set parameters
  
    void addDisplayFont(DisplayFontParam *param);
@@ -2461,7 +2502,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
    void setPSPaperWidth(int width);
    void setPSPaperHeight(int height);
    void setPSImageableArea(int llx, int lly, int urx, int ury);
-@@ -332,16 +332,16 @@
+@@ -332,16 +332,16 @@ public:
    void setPSPreload(GBool preload);
    void setPSOPI(GBool opi);
    void setPSASCIIHex(GBool hex);
@@ -2485,7 +2526,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
    void setScreenType(ScreenType t);
    void setScreenSize(int size);
    void setScreenDotRadius(int r);
-@@ -356,7 +356,7 @@
+@@ -356,7 +356,7 @@ public:
    //----- security handlers
  
    void addSecurityHandler(XpdfSecurityHandler *handler);
@@ -2494,7 +2535,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
  
  private:
  
-@@ -378,7 +378,7 @@
+@@ -378,7 +378,7 @@ private:
    void parsePSImageableArea(GList *tokens, GString *fileName, int line);
    void parsePSLevel(GList *tokens, GString *fileName, int line);
    void parsePSFont(GList *tokens, GString *fileName, int line);
@@ -2503,7 +2544,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
  		     GList *tokens, GString *fileName, int line);
    void parseTextEncoding(GList *tokens, GString *fileName, int line);
    void parseTextEOL(GList *tokens, GString *fileName, int line);
-@@ -390,21 +390,21 @@
+@@ -390,21 +390,21 @@ private:
    void parseUnbind(GList *tokens, GString *fileName, int line);
    GBool parseKey(GString *modKeyStr, GString *contextStr,
  		 int *code, int *mods, int *context,
@@ -2532,10 +2573,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/GlobalParams.h texlive-2008
  #endif
  
    //----- static tables
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Link.cc texlive-20080816-source/libs/xpdf/xpdf/Link.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Link.cc	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/Link.cc	2008-11-21 17:19:11.000000000 +0300
-@@ -626,7 +626,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Link.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Link.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/Link.cc
+@@ -626,7 +626,7 @@ LinkMovie::~LinkMovie() {
  // LinkUnknown
  //------------------------------------------------------------------------
  
@@ -2544,10 +2586,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Link.cc texlive-20080816-so
    action = new GString(actionA);
  }
  
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Link.h texlive-20080816-source/libs/xpdf/xpdf/Link.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Link.h	2007-07-12 01:13:59.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/Link.h	2008-11-21 17:18:48.000000000 +0300
-@@ -284,7 +284,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Link.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Link.h
++++ texlive-20080816-source/libs/xpdf/xpdf/Link.h
+@@ -284,7 +284,7 @@ class LinkUnknown: public LinkAction {
  public:
  
    // Build a LinkUnknown with the specified action type.
@@ -2556,9 +2599,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Link.h texlive-20080816-sou
  
    // Destructor.
    virtual ~LinkUnknown();
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.cc texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.cc	2008-11-21 17:19:46.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/NameToCharCode.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.cc
 @@ -19,7 +19,7 @@
  //------------------------------------------------------------------------
  
@@ -2568,7 +2612,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.cc texlive-2
    CharCode c;
  };
  
-@@ -41,13 +41,13 @@
+@@ -41,13 +41,13 @@ NameToCharCode::~NameToCharCode() {
  
    for (i = 0; i < size; ++i) {
      if (tab[i].name) {
@@ -2584,7 +2628,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.cc texlive-2
    NameToCharCodeEntry *oldTab;
    int h, i, oldSize;
  
-@@ -89,7 +89,7 @@
+@@ -89,7 +89,7 @@ void NameToCharCode::add(char *name, Cha
    ++len;
  }
  
@@ -2593,7 +2637,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.cc texlive-2
    int h;
  
    h = hash(name);
-@@ -104,8 +104,8 @@
+@@ -104,8 +104,8 @@ CharCode NameToCharCode::lookup(char *na
    return 0;
  }
  
@@ -2604,10 +2648,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.cc texlive-2
    unsigned int h;
  
    h = 0;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.h texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.h	2008-11-21 17:05:25.000000000 +0300
-@@ -27,12 +27,12 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/NameToCharCode.h
++++ texlive-20080816-source/libs/xpdf/xpdf/NameToCharCode.h
+@@ -27,12 +27,12 @@ public:
    NameToCharCode();
    ~NameToCharCode();
  
@@ -2623,9 +2668,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToCharCode.h texlive-20
  
    NameToCharCodeEntry *tab;
    int size;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToUnicodeTable.h texlive-20080816-source/libs/xpdf/xpdf/NameToUnicodeTable.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/NameToUnicodeTable.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/NameToUnicodeTable.h	2008-11-21 16:18:19.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/NameToUnicodeTable.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/NameToUnicodeTable.h
++++ texlive-20080816-source/libs/xpdf/xpdf/NameToUnicodeTable.h
 @@ -8,7 +8,7 @@
  
  static struct {
@@ -2635,9 +2681,10 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/NameToUnicodeTable.h texliv
  } nameToUnicodeTab[] = {
    {0x0021, "!"},
    {0x0023, "#"},
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.cc texlive-20080816-source/libs/xpdf/xpdf/Object.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Object.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/Object.cc	2008-11-21 17:23:26.000000000 +0300
+Index: texlive-20080816-source/libs/xpdf/xpdf/Object.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Object.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/Object.cc
 @@ -24,7 +24,7 @@
  // Object
  //------------------------------------------------------------------------
@@ -2647,7 +2694,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.cc texlive-20080816-
    "boolean",
    "integer",
    "real",
-@@ -112,7 +112,7 @@
+@@ -112,7 +112,7 @@ void Object::free() {
      delete string;
      break;
    case objName:
@@ -2656,7 +2703,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.cc texlive-20080816-
      break;
    case objArray:
      if (!array->decRef()) {
-@@ -130,7 +130,7 @@
+@@ -130,7 +130,7 @@ void Object::free() {
      }
      break;
    case objCmd:
@@ -2665,7 +2712,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.cc texlive-20080816-
      break;
    default:
      break;
-@@ -141,7 +141,7 @@
+@@ -141,7 +141,7 @@ void Object::free() {
    type = objNone;
  }
  
@@ -2674,10 +2721,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.cc texlive-20080816-
    return objTypeNames[type];
  }
  
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-source/libs/xpdf/xpdf/Object.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/Object.h	2008-11-21 17:49:30.000000000 +0300
-@@ -89,7 +89,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Object.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Object.h
++++ texlive-20080816-source/libs/xpdf/xpdf/Object.h
+@@ -89,7 +89,7 @@ public:
      { initObj(objReal); real = realA; return this; }
    Object *initString(GString *stringA)
      { initObj(objString); string = stringA; return this; }
@@ -2686,7 +2734,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
      { initObj(objName); name = copyString(nameA); return this; }
    Object *initNull()
      { initObj(objNull); return this; }
-@@ -99,7 +99,7 @@
+@@ -99,7 +99,7 @@ public:
    Object *initStream(Stream *streamA);
    Object *initRef(int numA, int genA)
      { initObj(objRef); ref.num = numA; ref.gen = genA; return this; }
@@ -2695,7 +2743,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
      { initObj(objCmd); cmd = copyString(cmdA); return this; }
    Object *initError()
      { initObj(objError); return this; }
-@@ -135,11 +135,11 @@
+@@ -135,11 +135,11 @@ public:
    GBool isNone() { return type == objNone; }
  
    // Special type checking.
@@ -2711,7 +2759,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
      { return type == objCmd && !strcmp(cmd, cmdA); }
  
    // Accessors.  NB: these assume object is of correct type.
-@@ -148,14 +148,14 @@
+@@ -148,14 +148,14 @@ public:
    double getReal() { return real; }
    double getNum() { return type == objInt ? (double)intg : real; }
    GString *getString() { return string; }
@@ -2728,7 +2776,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
  
    // Array accessors.
    int arrayGetLength();
-@@ -165,16 +165,16 @@
+@@ -165,16 +165,16 @@ public:
  
    // Dict accessors.
    int dictGetLength();
@@ -2751,7 +2799,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
    void streamReset();
    void streamClose();
    int streamGetChar();
-@@ -185,7 +185,7 @@
+@@ -185,7 +185,7 @@ public:
    Dict *streamGetDict();
  
    // Output.
@@ -2760,7 +2808,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
    void print(FILE *f = stdout);
  
    // Memory testing.
-@@ -199,12 +199,12 @@
+@@ -199,12 +199,12 @@ private:
      int intg;			//   integer
      double real;		//   real
      GString *string;		//   string
@@ -2775,7 +2823,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
    };
  
  #ifdef DEBUG_MEM
-@@ -240,22 +240,22 @@
+@@ -240,22 +240,22 @@ inline Object *Object::arrayGetNF(int i,
  inline int Object::dictGetLength()
    { return dict->getLength(); }
  
@@ -2804,7 +2852,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
    { return dict->getKey(i); }
  
  inline Object *Object::dictGetVal(int i, Object *obj)
-@@ -270,10 +270,10 @@
+@@ -270,10 +270,10 @@ inline Object *Object::dictGetValNF(int 
  
  #include "Stream.h"
  
@@ -2817,10 +2865,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Object.h texlive-20080816-s
    { return type == objStream && streamIs(dictType); }
  
  inline void Object::streamReset()
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Page.cc texlive-20080816-source/libs/xpdf/xpdf/Page.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Page.cc	2008-05-08 17:40:41.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/Page.cc	2008-11-21 17:43:25.000000000 +0300
-@@ -184,7 +184,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Page.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Page.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/Page.cc
+@@ -184,7 +184,7 @@ PageAttrs::~PageAttrs() {
    resources.free();
  }
  
@@ -2829,10 +2878,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Page.cc texlive-20080816-so
    PDFRectangle tmp;
    double t;
    Object obj1, obj2;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Page.h texlive-20080816-source/libs/xpdf/xpdf/Page.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Page.h	2008-05-08 17:40:41.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/Page.h	2008-11-21 17:43:36.000000000 +0300
-@@ -114,7 +114,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Page.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Page.h
++++ texlive-20080816-source/libs/xpdf/xpdf/Page.h
+@@ -114,7 +114,7 @@ public:
  
  private:
  
@@ -2841,10 +2891,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Page.h texlive-20080816-sou
  
    PDFRectangle mediaBox;
    PDFRectangle cropBox;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-source/libs/xpdf/xpdf/Stream.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc	2008-03-23 19:38:33.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/Stream.cc	2008-11-21 17:50:08.000000000 +0300
-@@ -85,7 +85,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Stream.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Stream.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/Stream.cc
+@@ -85,7 +85,7 @@ char *Stream::getLine(char *buf, int siz
    return buf;
  }
  
@@ -2853,7 +2904,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    return new GString();
  }
  
-@@ -133,7 +133,7 @@
+@@ -133,7 +133,7 @@ Stream *Stream::addFilters(Object *dict)
    return str;
  }
  
@@ -2862,7 +2913,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    int pred;			// parameters
    int colors;
    int bits;
-@@ -878,7 +878,7 @@
+@@ -878,7 +878,7 @@ int ASCIIHexStream::lookChar() {
    return buf;
  }
  
@@ -2871,7 +2922,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    GString *s;
  
    if (psLevel < 2) {
-@@ -959,7 +959,7 @@
+@@ -959,7 +959,7 @@ int ASCII85Stream::lookChar() {
    return b[index];
  }
  
@@ -2880,7 +2931,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    GString *s;
  
    if (psLevel < 2) {
-@@ -1145,7 +1145,7 @@
+@@ -1145,7 +1145,7 @@ int LZWStream::getCode() {
    return code;
  }
  
@@ -2889,7 +2940,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    GString *s;
  
    if (psLevel < 2 || pred) {
-@@ -1186,7 +1186,7 @@
+@@ -1186,7 +1186,7 @@ void RunLengthStream::reset() {
    eof = gFalse;
  }
  
@@ -2898,7 +2949,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    GString *s;
  
    if (psLevel < 2) {
-@@ -1834,7 +1834,7 @@
+@@ -1834,7 +1834,7 @@ short CCITTFaxStream::lookBits(int n) {
    return (inputBuf >> (inputBits - n)) & (0xffff >> (16 - n));
  }
  
@@ -2907,7 +2958,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    GString *s;
    char s1[50];
  
-@@ -3289,7 +3289,7 @@
+@@ -3289,7 +3289,7 @@ int DCTStream::read16() {
    return (c1 << 8) + c2;
  }
  
@@ -2916,7 +2967,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    GString *s;
  
    if (psLevel < 2) {
-@@ -4051,7 +4051,7 @@
+@@ -4051,7 +4051,7 @@ int FlateStream::getRawChar() {
    return c;
  }
  
@@ -2925,7 +2976,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    GString *s;
  
    if (psLevel < 3 || pred) {
-@@ -4466,7 +4466,7 @@
+@@ -4466,7 +4466,7 @@ void ASCIIHexEncoder::reset() {
  }
  
  GBool ASCIIHexEncoder::fillBuf() {
@@ -2934,10 +2985,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.cc texlive-20080816-
    int c;
  
    if (eof) {
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-source/libs/xpdf/xpdf/Stream.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h	2008-05-08 17:40:41.000000000 +0400
-+++ texlive-20080816-source/libs/xpdf/xpdf/Stream.h	2008-11-21 17:50:23.000000000 +0300
-@@ -154,7 +154,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/Stream.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/Stream.h
++++ texlive-20080816-source/libs/xpdf/xpdf/Stream.h
+@@ -154,7 +154,7 @@ public:
    virtual void setPos(Guint pos, int dir = 0) = 0;
  
    // Get PostScript command for the filter(s).
@@ -2946,7 +2998,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
  
    // Does this stream type potentially contain non-printable chars?
    virtual GBool isBinary(GBool last = gTrue) = 0;
-@@ -185,7 +185,7 @@
+@@ -185,7 +185,7 @@ public:
  
  private:
  
@@ -2955,7 +3007,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
  
    int ref;			// reference count
  };
-@@ -440,7 +440,7 @@
+@@ -440,7 +440,7 @@ public:
    virtual int getChar()
      { int c = lookChar(); buf = EOF; return c; }
    virtual int lookChar();
@@ -2964,7 +3016,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
  
  private:
-@@ -463,7 +463,7 @@
+@@ -463,7 +463,7 @@ public:
    virtual int getChar()
      { int ch = lookChar(); ++index; return ch; }
    virtual int lookChar();
@@ -2973,7 +3025,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
  
  private:
-@@ -489,7 +489,7 @@
+@@ -489,7 +489,7 @@ public:
    virtual int getChar();
    virtual int lookChar();
    virtual int getRawChar();
@@ -2982,7 +3034,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
  
  private:
-@@ -533,7 +533,7 @@
+@@ -533,7 +533,7 @@ public:
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr++ & 0xff); }
    virtual int lookChar()
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr & 0xff); }
@@ -2991,7 +3043,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
  
  private:
-@@ -564,7 +564,7 @@
+@@ -564,7 +564,7 @@ public:
    virtual int getChar()
      { int c = lookChar(); buf = EOF; return c; }
    virtual int lookChar();
@@ -3000,7 +3052,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
  
  private:
-@@ -637,7 +637,7 @@
+@@ -637,7 +637,7 @@ public:
    virtual void close();
    virtual int getChar();
    virtual int lookChar();
@@ -3009,7 +3061,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
    Stream *getRawStream() { return str; }
  
-@@ -740,7 +740,7 @@
+@@ -740,7 +740,7 @@ public:
    virtual int getChar();
    virtual int lookChar();
    virtual int getRawChar();
@@ -3018,7 +3070,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
  
  private:
-@@ -793,7 +793,7 @@
+@@ -793,7 +793,7 @@ public:
    virtual void reset() {}
    virtual int getChar() { return EOF; }
    virtual int lookChar() { return EOF; }
@@ -3027,7 +3079,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue) { return gFalse; }
  };
  
-@@ -810,7 +810,7 @@
+@@ -810,7 +810,7 @@ public:
    virtual void reset();
    virtual int getChar();
    virtual int lookChar();
@@ -3036,7 +3088,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue);
    virtual GBool isEncoder() { return gTrue; }
  
-@@ -835,7 +835,7 @@
+@@ -835,7 +835,7 @@ public:
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr++ & 0xff); }
    virtual int lookChar()
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr & 0xff); }
@@ -3045,7 +3097,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue) { return gFalse; }
    virtual GBool isEncoder() { return gTrue; }
  
-@@ -865,7 +865,7 @@
+@@ -865,7 +865,7 @@ public:
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr++ & 0xff); }
    virtual int lookChar()
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr & 0xff); }
@@ -3054,7 +3106,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue) { return gFalse; }
    virtual GBool isEncoder() { return gTrue; }
  
-@@ -895,7 +895,7 @@
+@@ -895,7 +895,7 @@ public:
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr++ & 0xff); }
    virtual int lookChar()
      { return (bufPtr >= bufEnd && !fillBuf()) ? EOF : (*bufPtr & 0xff); }
@@ -3063,10 +3115,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/Stream.h texlive-20080816-s
    virtual GBool isBinary(GBool last = gTrue) { return gTrue; }
    virtual GBool isEncoder() { return gTrue; }
  
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/UnicodeMap.cc texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.cc
---- texlive-20080816-source/libs/xpdf.orig/xpdf/UnicodeMap.cc	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.cc	2008-11-21 17:20:50.000000000 +0300
-@@ -121,7 +121,7 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.cc
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/UnicodeMap.cc
++++ texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.cc
+@@ -121,7 +121,7 @@ UnicodeMap::UnicodeMap(GString *encoding
  #endif
  }
  
@@ -3075,7 +3128,7 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/UnicodeMap.cc texlive-20080
  		       UnicodeMapRange *rangesA, int lenA) {
    encodingName = new GString(encodingNameA);
    unicodeOut = unicodeOutA;
-@@ -136,7 +136,7 @@
+@@ -136,7 +136,7 @@ UnicodeMap::UnicodeMap(char *encodingNam
  #endif
  }
  
@@ -3084,10 +3137,11 @@ diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/UnicodeMap.cc texlive-20080
  		       UnicodeMapFunc funcA) {
    encodingName = new GString(encodingNameA);
    unicodeOut = unicodeOutA;
-diff -ur texlive-20080816-source/libs/xpdf.orig/xpdf/UnicodeMap.h texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.h
---- texlive-20080816-source/libs/xpdf.orig/xpdf/UnicodeMap.h	2006-01-16 03:09:26.000000000 +0300
-+++ texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.h	2008-11-21 17:20:34.000000000 +0300
-@@ -53,12 +53,12 @@
+Index: texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.h
+===================================================================
+--- texlive-20080816-source.orig/libs/xpdf/xpdf/UnicodeMap.h
++++ texlive-20080816-source/libs/xpdf/xpdf/UnicodeMap.h
+@@ -53,12 +53,12 @@ public:
    static UnicodeMap *parse(GString *encodingNameA);
  
    // Create a resident UnicodeMap.

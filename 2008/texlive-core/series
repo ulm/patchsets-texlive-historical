@@ -8,3 +8,5 @@
 190_all_xpdf_const_char.patch
 200_all_xpdf-3.02pl3.patch
 210_all_getline.patch
+220_all_gcc44-glibc210.patch
+230_all_jpegimage_implicit_decl_free.patch

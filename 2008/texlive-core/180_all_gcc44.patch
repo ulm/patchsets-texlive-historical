@@ -3,10 +3,11 @@ By Ryan Hill <dirtyepic@gentoo.org>
 https://bugs.gentoo.org/show_bug.cgi?id=249224
 
 
-diff -Naur texlive-20080816-source-orig/libs/teckit/source/Compiler.cpp texlive-20080816-source/libs/teckit/source/Compiler.cpp
---- texlive-20080816-source-orig/libs/teckit/source/Compiler.cpp	2008-04-25 08:56:15.000000000 -0600
-+++ texlive-20080816-source/libs/teckit/source/Compiler.cpp	2008-11-28 22:27:07.000000000 -0600
-@@ -33,6 +33,7 @@
+Index: texlive-20080816-source/libs/teckit/source/Compiler.cpp
+===================================================================
+--- texlive-20080816-source.orig/libs/teckit/source/Compiler.cpp
++++ texlive-20080816-source/libs/teckit/source/Compiler.cpp
+@@ -33,6 +33,7 @@ Description:
  #include <iomanip>
  #include <algorithm>
  #include <cstring>

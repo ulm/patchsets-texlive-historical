@@ -1,10 +1,10 @@
-Index: work/libs/teckit/lib/Makefile.am
+Index: texlive-20080816-source/libs/teckit/lib/Makefile.am
 ===================================================================
---- work.orig/libs/teckit/lib/Makefile.am
-+++ work/libs/teckit/lib/Makefile.am
-@@ -10,5 +10,8 @@ AM_CFLAGS    = $(AM_CPPFLAGS)
- 
- lib_LTLIBRARIES = libTECkit_Compiler.la libTECkit.la
+--- texlive-20080816-source.orig/libs/teckit/lib/Makefile.am
++++ texlive-20080816-source/libs/teckit/lib/Makefile.am
+@@ -13,5 +13,8 @@ lib_LTLIBRARIES = libTECkit_Compiler.la 
+ ## libTECkit_Compiler_la_LIBADD = @LDZLIB@
+ ## libTECkit_la_LIBADD = @LDZLIB@
  
 +libTECkit_Compiler_la_LIBADD = @LDZLIB@
 +libTECkit_la_LIBADD = @LDZLIB@
