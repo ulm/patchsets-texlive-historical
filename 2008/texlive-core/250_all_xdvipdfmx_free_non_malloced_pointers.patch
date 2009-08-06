@@ -1,6 +1,9 @@
 http://bugs.gentoo.org/show_bug.cgi?id=276415
 
-Upstream status: Mailed to Jonathan Kew on 6 Aug 2009
+Upstream status:
+ - Mailed to Jonathan Kew on 6 Aug 2009
+ - Merged in TeX Live svn on 6 Aug 2009.
+ - Jonathan forwarded the patch to dvipdfmx author.
 
 
 Index: texlive-20080816-source/texk/xdvipdfmx/src/tt_post.c
