@@ -12,3 +12,4 @@
 230_all_jpegimage_implicit_decl_free.patch
 240_all_autoconf264.patch
 250_all_xdvipdfmx_free_non_malloced_pointers.patch
+260_all_bibtex_string_pool_size.patch
