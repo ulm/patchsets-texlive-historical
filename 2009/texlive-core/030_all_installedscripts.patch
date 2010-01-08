@@ -99,6 +99,18 @@ Index: texlive-20091107-source/texk/texlive/linked_scripts/Makefile.in
  	  *) echo "strange directory '$(bindir)' for linked scripts" >&2; \
  	     exit 1;; \
  	esac
+@@ -573,10 +520,7 @@ install-links:
+ 	  $(LN_S) epstopdf repstopdf && \
+ 	  rm -f getnonfreefonts-sys && \
+ 	  echo "creating link 'getnonfreefonts-sys' -> 'getnonfreefonts'" && \
+-	  $(LN_S) getnonfreefonts getnonfreefonts-sys && \
+-	  rm -f man && \
+-	  echo "creating link 'man' -> '$(REL)/texmf/doc/man'" && \
+-	  (ln -s $(REL)/texmf/doc/man man || :)
++	  $(LN_S) getnonfreefonts getnonfreefonts-sys
+ 
+ uninstall-hook:
+ 	@for s in $(nobase_dist_scriptx_SCRIPTS) $(nobase_dist_script_SCRIPTS); do \
 Index: texlive-20091107-source/texk/tetex/Makefile.in
 ===================================================================
 --- texlive-20091107-source.orig/texk/tetex/Makefile.in
