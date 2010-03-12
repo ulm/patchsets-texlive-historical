@@ -2,3 +2,4 @@
 020_all_poppler.patch
 030_all_installedscripts.patch
 040_all_texmfdirs.patch
+050_all_libpng14.patch

@@ -1,0 +1,44 @@
+--- texk/web2c/xetexdir/pngimage.c
++++ texk/web2c/xetexdir/pngimage.c
+@@ -101,7 +101,7 @@
+   rewind (png_file);
+   if (fread (sigbytes, 1, sizeof(sigbytes), png_file) !=
+       sizeof(sigbytes) ||
+-      (!png_check_sig (sigbytes, sizeof(sigbytes))))
++      (png_sig_cmp (sigbytes, 0, sizeof(sigbytes))))
+     return 0;
+   else
+     return 1;
+--- texk/dvipdfmx/src/pngimage.c
++++ texk/dvipdfmx/src/pngimage.c
+@@ -148,7 +148,7 @@
+   rewind (png_file);
+   if (fread (sigbytes, 1, sizeof(sigbytes), png_file) !=
+       sizeof(sigbytes) ||
+-      (!png_check_sig (sigbytes, sizeof(sigbytes))))
++      (png_sig_cmp (sigbytes, 0, sizeof(sigbytes))))
+     return 0;
+   else
+     return 1;
+--- texk/xdvipdfmx/src/pngimage.c
++++ texk/xdvipdfmx/src/pngimage.c
+@@ -146,7 +146,7 @@
+   rewind (png_file);
+   if (fread (sigbytes, 1, sizeof(sigbytes), png_file) !=
+       sizeof(sigbytes) ||
+-      (!png_check_sig (sigbytes, sizeof(sigbytes))))
++      (png_sig_cmp (sigbytes, 0, sizeof(sigbytes))))
+     return 0;
+   else
+     return 1;
+--- texk/xdvipdfmx/src/xbb.c
++++ texk/xdvipdfmx/src/xbb.c
+@@ -246,7 +246,7 @@
+   unsigned char sigbytes[4];
+   rewind (png_file);
+   if (fread(sigbytes, 1, sizeof(sigbytes), png_file) != sizeof(sigbytes) ||
+-      (!png_check_sig (sigbytes, sizeof(sigbytes)))) return 0;
++      (png_sig_cmp (sigbytes, 0, sizeof(sigbytes)))) return 0;
+   else return 1;
+ }             
+ 
