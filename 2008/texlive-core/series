@@ -14,3 +14,6 @@
 250_all_xdvipdfmx_free_non_malloced_pointers.patch
 260_all_bibtex_string_pool_size.patch
 270_all_libpng14.patch
+280_all_CVE-2010-0739.patch
+290_all_CVE-2010-0739,1440-integer-overflows.patch
+300_all_CVE-2010-0827.patch
