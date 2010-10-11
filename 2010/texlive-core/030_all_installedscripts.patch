@@ -1,0 +1,116 @@
+Index: texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
+===================================================================
+--- texlive-20100722-source.orig/texk/texlive/linked_scripts/Makefile.in
++++ texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
+@@ -162,86 +162,39 @@ bin_SCRIPTS =
+ # dangling symlinks produced by `make install'.
+ # The instances in texmf* are the masters (except when it is CTAN).
+ #
+-scriptxdir = ${prefix}/texmf/scripts
++scriptxdir = ${prefix}/share/texmf/scripts
+ nobase_dist_scriptx_SCRIPTS = \
+ 	a2ping/a2ping.pl \
+-	simpdftex/simpdftex \
+ 	tetex/e2pall.pl \
+ 	tetex/texdoctk.pl \
+ 	texdoc/texdoc.tlu \
+-	texlive/rungs.tlu \
+-	texlive/tlmgr.pl
+ 
+-scriptdir = ${prefix}/texmf-dist/scripts
++scriptdir = ${prefix}/share/texmf-dist/scripts
+ nobase_dist_script_SCRIPTS = \
+-	accfonts/mkt1font \
+-	accfonts/vpl2ovp \
+-	accfonts/vpl2vpl \
+ 	authorindex/authorindex \
+-	bengali/ebong.py \
+ 	bibexport/bibexport.sh \
+ 	bundledoc/arlatex \
+ 	bundledoc/bundledoc \
+-	cachepic/cachepic.tlu \
+-	context/perl/mptopdf.pl \
+ 	de-macro/de-macro \
+ 	dviasm/dviasm.py \
+-	epspdf/epspdf \
+-	epspdf/epspdftk \
+-	epstopdf/epstopdf.pl \
+-	fig4latex/fig4latex \
+ 	findhyph/findhyph \
+-	fontools/afm2afm \
+-	fontools/autoinst \
+-	fontools/cmap2enc \
+-	fontools/font2afm \
+-	fontools/ot2kpx \
+-	fontools/pfm2kpx \
+-	fontools/showglyphs \
+ 	fragmaster/fragmaster.pl \
+-	glossaries/makeglossaries \
+ 	latex2man/latex2man \
+ 	latexdiff/latexdiff.pl \
+ 	latexdiff/latexdiff-vc.pl \
+ 	latexdiff/latexrevise.pl \
+-	latexmk/latexmk.pl \
+ 	luaotfload/mkluatexfontdb.lua \
+ 	listings-ext/listings-ext.sh \
+ 	mathspic/mathspic.pl \
+ 	mkjobtexmf/mkjobtexmf.pl \
+-	mkgrkindex/mkgrkindex \
+-	oberdiek/pdfatfi.pl \
+-	pax/pdfannotextractor.pl \
+ 	pdfcrop/pdfcrop.pl \
+-	pdfjam/pdf180 \
+-	pdfjam/pdf270 \
+-	pdfjam/pdf90 \
+-	pdfjam/pdfbook \
+-	pdfjam/pdfflip \
+-	pdfjam/pdfjam \
+-	pdfjam/pdfjam-pocketmod \
+-	pdfjam/pdfjam-slides3up \
+-	pdfjam/pdfjam-slides6up \
+-	pdfjam/pdfjoin \
+-	pdfjam/pdfnup \
+-	pdfjam/pdfpun \
+-	perltex/perltex.pl \
+ 	pkfix/pkfix.pl \
+ 	pkfix-helper/pkfix-helper \
+-	ppower4/pdfthumb.tlu \
+-	ppower4/ppower4.tlu \
+-	pst-pdf/ps4pdf \
+-	pst2pdf/pst2pdf \
+ 	purifyeps/purifyeps \
+-	splitindex/perl/splitindex.pl \
+-	svn-multi/svn-multi.pl \
+ 	texcount/texcount.pl \
+ 	texdiff/texdiff \
+ 	texdirflatten/texdirflatten \
+ 	texloganalyser/texloganalyser \
+-	thumbpdf/thumbpdf.pl \
+-	ulqda/ulqda.pl \
+-	vpe/vpe.pl
+ 
+ 
+ # Symlinks within $(bindir): FILE:LINK indicates LINK->FILE
+@@ -577,8 +530,8 @@ uninstall-am: uninstall-binSCRIPTS unins
+ #
+ install-data-hook:
+ 	case "$(bindir)" in \
+-	  */bin) $(MAKE) $(AM_MAKEFLAGS) REL=.. install-links;; \
+-	  */bin/*) $(MAKE) $(AM_MAKEFLAGS) REL=../.. install-links;; \
++	  */bin) $(MAKE) $(AM_MAKEFLAGS) REL=../share install-links;; \
++	  */bin/*) $(MAKE) $(AM_MAKEFLAGS) REL=../../share install-links;; \
+ 	  *) echo "strange directory '$(bindir)' for linked scripts" >&2; \
+ 	     exit 1;; \
+ 	esac
+Index: texlive-20100722-source/texk/tetex/Makefile.in
+===================================================================
+--- texlive-20100722-source.orig/texk/tetex/Makefile.in
++++ texlive-20100722-source/texk/tetex/Makefile.in
+@@ -196,7 +196,6 @@ dist_bin_SCRIPTS = \
+ 	kpsetool \
+ 	kpsewhere \
+ 	ps2frag \
+-	ps4pdf \
+ 	pslatex \
+ 	rubibtex \
+ 	rumakeindex \
