@@ -2,7 +2,7 @@ Index: texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20100722-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
-@@ -162,86 +162,39 @@ bin_SCRIPTS =
+@@ -162,86 +162,38 @@ bin_SCRIPTS =
  # dangling symlinks produced by `make install'.
  # The instances in texmf* are the masters (except when it is CTAN).
  #
@@ -25,7 +25,7 @@ Index: texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
 -	accfonts/vpl2vpl \
  	authorindex/authorindex \
 -	bengali/ebong.py \
- 	bibexport/bibexport.sh \
+-	bibexport/bibexport.sh \
  	bundledoc/arlatex \
  	bundledoc/bundledoc \
 -	cachepic/cachepic.tlu \
@@ -91,7 +91,7 @@ Index: texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
  
  
  # Symlinks within $(bindir): FILE:LINK indicates LINK->FILE
-@@ -577,8 +530,8 @@ uninstall-am: uninstall-binSCRIPTS unins
+@@ -577,8 +529,8 @@ uninstall-am: uninstall-binSCRIPTS unins
  #
  install-data-hook:
  	case "$(bindir)" in \
@@ -114,3 +114,24 @@ Index: texlive-20100722-source/texk/tetex/Makefile.in
  	pslatex \
  	rubibtex \
  	rumakeindex \
+Index: texlive-20100722-source/texk/texlive/context/Makefile.in
+===================================================================
+--- texlive-20100722-source.orig/texk/texlive/context/Makefile.in
++++ texlive-20100722-source/texk/texlive/context/Makefile.in
+@@ -153,15 +153,7 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ ACLOCAL_AMFLAGS = -I ../../m4
+-bin_SCRIPTS = \
+-	context \
+-	ctxtools \
+-	luatools \
+-	mtxrun \
+-	pstopdf \
+-	rlxtools \
+-	texexec \
+-	texmfstart
++bin_SCRIPTS =
+ 
+ EXTRA_DIST = $(bin_SCRIPTS)
+ all: all-am
