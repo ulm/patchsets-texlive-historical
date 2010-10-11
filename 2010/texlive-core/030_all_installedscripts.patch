@@ -2,7 +2,7 @@ Index: texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20100722-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
-@@ -162,86 +162,34 @@ bin_SCRIPTS =
+@@ -162,86 +162,33 @@ bin_SCRIPTS =
  # dangling symlinks produced by `make install'.
  # The instances in texmf* are the masters (except when it is CTAN).
  #
@@ -51,7 +51,7 @@ Index: texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
 -	latexdiff/latexdiff-vc.pl \
 -	latexdiff/latexrevise.pl \
 -	latexmk/latexmk.pl \
- 	luaotfload/mkluatexfontdb.lua \
+-	luaotfload/mkluatexfontdb.lua \
  	listings-ext/listings-ext.sh \
 -	mathspic/mathspic.pl \
  	mkjobtexmf/mkjobtexmf.pl \
@@ -91,7 +91,7 @@ Index: texlive-20100722-source/texk/texlive/linked_scripts/Makefile.in
  
  
  # Symlinks within $(bindir): FILE:LINK indicates LINK->FILE
-@@ -577,8 +525,8 @@ uninstall-am: uninstall-binSCRIPTS unins
+@@ -577,8 +524,8 @@ uninstall-am: uninstall-binSCRIPTS unins
  #
  install-data-hook:
  	case "$(bindir)" in \
