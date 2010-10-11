@@ -316,7 +316,7 @@ RUBYINPUTS   = .;$TEXMF/scripts/{$progname,$engine,}/ruby//
 % 
 % For security reasons, it is better not to include . in this path.
 %
-TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
+TEXMFCNF = $SELFAUTODIR{,/local}/share/texmf/web2c
 
 % kpathsea 3.5.3 and later sets these at runtime. To avoid empty
 % expansions from binaries linked against an earlier version of the
