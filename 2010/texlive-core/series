@@ -1,3 +1,4 @@
 030_all_installedscripts.patch
 040_all_texmfdirs.patch
 050_all_icu_arm.patch
+060_all_pdftex_libpng15.patch
