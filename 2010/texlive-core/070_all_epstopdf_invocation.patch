@@ -1,0 +1,22 @@
+Index: texlive-20100722-source/extra/epstopdf/epstopdf.pl
+===================================================================
+--- texlive-20100722-source.orig/extra/epstopdf/epstopdf.pl
++++ texlive-20100722-source/extra/epstopdf/epstopdf.pl
+@@ -1,5 +1,4 @@
+-eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}' && eval 'exec perl -S $0 $argv:q'
+-  if 0;
++#!/usr/bin/perl
+ use strict;
+ 
+ # $Id: 070_all_epstopdf_invocation.patch,v 1.1 2011/02/17 14:11:34 aballier Exp $
+Index: texlive-20100722-source/texk/texlive/linked_scripts/epstopdf/epstopdf.pl
+===================================================================
+--- texlive-20100722-source.orig/texk/texlive/linked_scripts/epstopdf/epstopdf.pl
++++ texlive-20100722-source/texk/texlive/linked_scripts/epstopdf/epstopdf.pl
+@@ -1,5 +1,4 @@
+-eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}' && eval 'exec perl -S $0 $argv:q'
+-  if 0;
++#!/usr/bin/perl
+ use strict;
+ 
+ # $Id: 070_all_epstopdf_invocation.patch,v 1.1 2011/02/17 14:11:34 aballier Exp $

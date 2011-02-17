@@ -2,3 +2,6 @@
 040_all_texmfdirs.patch
 050_all_icu_arm.patch
 060_all_pdftex_libpng15.patch
+070_all_epstopdf_invocation.patch
+080_all_a2ping_invocation.patch
+090_all_pdfcrop_invocation.patch

@@ -1,0 +1,13 @@
+Index: texlive-20100722-source/texk/texlive/linked_scripts/pdfcrop/pdfcrop.pl
+===================================================================
+--- texlive-20100722-source.orig/texk/texlive/linked_scripts/pdfcrop/pdfcrop.pl
++++ texlive-20100722-source/texk/texlive/linked_scripts/pdfcrop/pdfcrop.pl
+@@ -1,7 +1,5 @@
+-eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}' && eval 'exec perl -S $0 $argv:q'
+-  if 0;
++#!/usr/bin/perl -w
+ use strict;
+-$^W=1; # turn warning on
+ #
+ # pdfcrop.pl
+ #
