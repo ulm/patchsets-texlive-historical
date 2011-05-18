@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/show_bug.cgi?id=349085
+https://bugs.gentoo.org/show_bug.cgi?id=326021
+
+Index: texlive-20100722-source/libs/icu/icu-4.4/tools/pkgdata/pkgdata.cpp
+===================================================================
+--- texlive-20100722-source.orig/libs/icu/icu-4.4/tools/pkgdata/pkgdata.cpp
++++ texlive-20100722-source/libs/icu/icu-4.4/tools/pkgdata/pkgdata.cpp
+@@ -561,12 +561,19 @@ static int32_t pkg_executeOptions(UPKGOp
+             char gencFilePath[SMALL_BUFFER_MAX_SIZE] = "";
+             char version_major[10] = "";
+             UBool reverseExt = FALSE;
++            unsigned currentBufferSize = SMALL_BUFFER_MAX_SIZE;
+ 
+             /* Initialize pkgdataFlags */
+             pkgDataFlags = (char**)uprv_malloc(sizeof(char*) * PKGDATA_FLAGS_SIZE);
++#ifndef WINDOWS_WITH_MSVC
++            /* If we run out of space, allocate more */
++            do{
++                status = U_ZERO_ERROR;
++#endif
++
+             if (pkgDataFlags != NULL) {
+                 for (int32_t i = 0; i < PKGDATA_FLAGS_SIZE; i++) {
+-                    pkgDataFlags[i] = (char*)uprv_malloc(sizeof(char) * SMALL_BUFFER_MAX_SIZE);
++                    pkgDataFlags[i] = (char*)uprv_malloc(sizeof(char) * currentBufferSize);
+                     if (pkgDataFlags[i] != NULL) {
+                         pkgDataFlags[i][0] = 0;
+                     } else {
+@@ -592,11 +599,18 @@ static int32_t pkg_executeOptions(UPKGOp
+             if(o->verbose) {
+               fprintf(stdout, "# Reading options file %s\n", o->options);
+             }
+-            parseFlagsFile(o->options, pkgDataFlags, SMALL_BUFFER_MAX_SIZE, (int32_t)PKGDATA_FLAGS_SIZE, &status);
++            parseFlagsFile(o->options, pkgDataFlags, currentBufferSize, (int32_t)PKGDATA_FLAGS_SIZE, &status);
++            if (status == U_BUFFER_OVERFLOW_ERROR) {
++                    for (int32_t i = 0; i < PKGDATA_FLAGS_SIZE; i++)
++                            uprv_free(pkgDataFlags[i]);
++                    currentBufferSize *= 2;
++            }
++            else
+             if (U_FAILURE(status)) {
+                 fprintf(stderr,"Unable to open or read \"%s\" option file. status = %s\n", o->options, u_errorName(status));
+                 return -1;
+             }
++            } while (status == U_BUFFER_OVERFLOW_ERROR);
+ 
+             /* Get the version major number. */
+             if (o->version != NULL) {
