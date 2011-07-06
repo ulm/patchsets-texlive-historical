@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/show_bug.cgi?id=356701
+http://tug.org/pipermail/xetex/2011-January/019720.html
+http://sourceforge.net/tracker/?func=detail&aid=3145819&group_id=194926&atid=951385
+
+---
+\documentclass[a4paper,12pt]{article}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{Asana Math}
+\begin{document}
+$\frac{2\pi r}{r} = 2\pi$
+\end{document
+--- 
+
+Index: texlive-20100722-source/texk/web2c/xetexdir/XeTeX_ext.h
+===================================================================
+--- texlive-20100722-source.orig/texk/web2c/xetexdir/XeTeX_ext.h
++++ texlive-20100722-source/texk/web2c/xetexdir/XeTeX_ext.h
+@@ -33,6 +33,7 @@ authorization from the copyright holders
+ #ifndef __XETEXEXT_H
+ #define __XETEXEXT_H
+ 
++#include <w2c/c-auto.h>        /* needed for SIZEOF_LONG and NO_DUMP_SHARE */
+ /***** copied from TeX/texk/web2c/config.h -- difficult to include in C++ source files ******/
+ #ifndef INTEGER_TYPE
+ 
