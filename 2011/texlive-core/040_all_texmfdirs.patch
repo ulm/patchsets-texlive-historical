@@ -1,3 +1,5 @@
+Fix texmf dirs: /usr/texmf* -> /usr/share/texmf*
+
 Index: texlive-20110705-source/texk/tetex/Makefile.in
 ===================================================================
 --- texlive-20110705-source.orig/texk/tetex/Makefile.in

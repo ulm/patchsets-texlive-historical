@@ -1,3 +1,5 @@
+Remove the texmf scripts we install via dev-texlive/* ebuilds.
+
 Index: texlive-20110705-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20110705-source.orig/texk/texlive/linked_scripts/Makefile.in
