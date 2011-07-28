@@ -1,0 +1,61 @@
+Index: texlive-20110705-source/texk/tetex/Makefile.in
+===================================================================
+--- texlive-20110705-source.orig/texk/tetex/Makefile.in
++++ texlive-20110705-source/texk/tetex/Makefile.in
+@@ -220,7 +220,7 @@ sh_scripts = \
+ 	texconfig-sys \
+ 	texlinks
+ 
+-scriptsdir = texmf/scripts/tetex
++scriptsdir = share/texmf/scripts/tetex
+ nodist_bin_SCRIPTS = $(am__append_1)
+ all_scripts = $(lua_scripts) $(perl_scripts) $(shell_scripts)
+ @WIN32_TRUE@@WIN32_WRAP_TRUE@wrappers = $(all_scripts:=.exe)
+@@ -262,10 +262,10 @@ nobase_dist_texconf_DATA = \
+ 	texmf/texconfig/v/vt100 \
+ 	texmf/texconfig/x/xterm
+ 
+-texconfigdir = ${prefix}/texmf/texconfig
++texconfigdir = ${prefix}/share/texmf/texconfig
+ dist_texconfig_SCRIPTS = tcfmgr
+ dist_texconfig_DATA = tcfmgr.map
+-web2cdir = ${prefix}/texmf/web2c
++web2cdir = ${prefix}/share/texmf/web2c
+ dist_web2c_DATA = fmtutil.cnf
+ bin_links = \
+ 	allcm:allec \
+Index: texlive-20110705-source/texk/bibtex8/Makefile.in
+===================================================================
+--- texlive-20110705-source.orig/texk/bibtex8/Makefile.in
++++ texlive-20110705-source/texk/bibtex8/Makefile.in
+@@ -269,7 +269,7 @@ bibtex8_SOURCES = \
+ 	sysdep.h
+ 
+ LDADD = $(KPATHSEA_LIBS)	
+-csfdir = ${prefix}/texmf-dist/bibtex/csf/base
++csfdir = ${prefix}/share/texmf-dist/bibtex/csf/base
+ dist_csf_DATA = \
+ 	csf/88591lat.csf \
+ 	csf/88591sca.csf \
+@@ -280,7 +280,7 @@ dist_csf_DATA = \
+ 	csf/cp866rus.csf \
+ 	csf/csfile.txt
+ 
+-btdocdir = ${prefix}/texmf/doc/bibtex8
++btdocdir = ${prefix}/share/texmf/doc/bibtex8
+ dist_btdoc_DATA = \
+ 	00readme.txt \
+ 	HISTORY \
+Index: texlive-20110705-source/texk/gsftopk/Makefile.in
+===================================================================
+--- texlive-20110705-source.orig/texk/gsftopk/Makefile.in
++++ texlive-20110705-source/texk/gsftopk/Makefile.in
+@@ -259,7 +259,7 @@ gsftopk_SOURCES = \
+ DISTCLEANFILES = config.force gsftopk.1 sedscript
+ LDADD = $(KPATHSEA_LIBS)
+ dist_gsftopkpsheader_DATA = render.ps
+-gsftopkpsheaderdir = ${prefix}/texmf/dvips/gsftopk
++gsftopkpsheaderdir = ${prefix}/share/texmf/dvips/gsftopk
+ nodist_man1_MANS = gsftopk.1
+ EXTRA_DIST = gsftopk1.sed mksedscript
+ all: c-auto.h
