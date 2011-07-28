@@ -11,6 +11,15 @@ Index: texlive-20110705-source/texk/tetex/Makefile.in
  nodist_bin_SCRIPTS = $(am__append_1)
  all_scripts = $(lua_scripts) $(perl_scripts) $(shell_scripts)
  @WIN32_TRUE@@WIN32_WRAP_TRUE@wrappers = $(all_scripts:=.exe)
+@@ -254,7 +254,7 @@ dist_man5_MANS = \
+ 	fmtutil.cnf.5 \
+ 	updmap.cfg.5
+ 
+-texconfdir = ${prefix}
++texconfdir = ${prefix}/share
+ nobase_dist_texconf_DATA = \
+ 	texmf/texconfig/README \
+ 	texmf/texconfig/g/generic \
 @@ -262,10 +262,10 @@ nobase_dist_texconf_DATA = \
  	texmf/texconfig/v/vt100 \
  	texmf/texconfig/x/xterm

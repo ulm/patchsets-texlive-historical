@@ -2,7 +2,7 @@ Index: texlive-20110705-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20110705-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20110705-source/texk/texlive/linked_scripts/Makefile.in
-@@ -166,99 +166,49 @@ bin_SCRIPTS =
+@@ -166,99 +166,47 @@ bin_SCRIPTS =
  # dangling symlinks produced by `make install'.
  # The instances in texmf* are the masters (except when it is CTAN).
  #
@@ -81,8 +81,8 @@ Index: texlive-20110705-source/texk/texlive/linked_scripts/Makefile.in
 -	mathspic/mathspic.pl \
  	mkjobtexmf/mkjobtexmf.pl \
 -	mkgrkindex/mkgrkindex \
- 	musixtex/musixflx.lua \
- 	musixtex/musixtex.lua \
+-	musixtex/musixflx.lua \
+-	musixtex/musixtex.lua \
 -	oberdiek/pdfatfi.pl \
 -	pax/pdfannotextractor.pl \
  	pdfcrop/pdfcrop.pl \
@@ -108,7 +108,7 @@ Index: texlive-20110705-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_dist_scripts_SCRIPTS = \
  	$(texmf_dist_shell_scripts) \
-@@ -620,8 +570,8 @@ install-data-hook:
+@@ -620,8 +568,8 @@ install-data-hook:
  @WIN32_TRUE@	  $(INSTALL_SCRIPT) $(runscript) $(DESTDIR)$(bindir)/$$link.exe || exit 1; \
  @WIN32_TRUE@	done
  @WIN32_FALSE@	case "$(bindir)" in \
