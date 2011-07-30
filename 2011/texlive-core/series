@@ -1,3 +1,4 @@
 030_all_installedscripts.patch
 040_all_texmfdirs.patch
 080_all_a2ping_invocation.patch
+090_all_pdfoutput.patch
