@@ -1,4 +1,8 @@
-https://bugs.gentoo.org/show_bug.cgi?id=374147
+Correct off-by-one indexing bug causing stack spill.
+
+2011-07-29 Martin von Gagern
+
+https://bugs.gentoo.org/374147
 
 Index: texlive-20100722-source/texk/web2c/xetexdir/xetex.ch
 ===================================================================
