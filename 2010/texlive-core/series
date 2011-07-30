@@ -5,3 +5,4 @@
 080_all_a2ping_invocation.patch
 090_all_xetex_math.patch
 100_all_icu_longflags.patch
+110_all_pdfoutput.patch

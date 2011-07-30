@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/show_bug.cgi?id=374147
+
+Index: texlive-20100722-source/texk/web2c/xetexdir/xetex.ch
+===================================================================
+--- texlive-20100722-source.orig/texk/web2c/xetexdir/xetex.ch
++++ texlive-20100722-source/texk/web2c/xetexdir/xetex.ch
+@@ -335,7 +335,7 @@ for i:=@'177 to @'377 do xchr[i]:=i;
+ {Initialize enc\TeX\ data.}
+ for i:=0 to 255 do mubyte_read[i]:=null;
+ for i:=0 to 255 do mubyte_write[i]:=0;
+-for i:=0 to 128 do mubyte_cswrite[i]:=null;
++for i:=0 to 127 do mubyte_cswrite[i]:=null;
+ mubyte_keep := 0; mubyte_start := false;
+ write_noexpanding := false; cs_converting := false;
+ special_printing := false; message_printing := false;
+Index: texlive-20100722-source/texk/web2c/ptexdir/ptex-base.ch
+===================================================================
+--- texlive-20100722-source.orig/texk/web2c/ptexdir/ptex-base.ch
++++ texlive-20100722-source/texk/web2c/ptexdir/ptex-base.ch
+@@ -93,7 +93,7 @@ message_printing: boolean; { true if mes
+ {Initialize enc\TeX\ data.}
+ for i:=0 to 255 do mubyte_read[i]:=null;
+ for i:=0 to 255 do mubyte_write[i]:=0;
+-for i:=0 to 128 do mubyte_cswrite[i]:=null;
++for i:=0 to 127 do mubyte_cswrite[i]:=null;
+ mubyte_keep := 0; mubyte_start := false;
+ write_noexpanding := false; cs_converting := false;
+ special_printing := false; message_printing := false;
+Index: texlive-20100722-source/texk/web2c/tex.ch
+===================================================================
+--- texlive-20100722-source.orig/texk/web2c/tex.ch
++++ texlive-20100722-source/texk/web2c/tex.ch
+@@ -371,7 +371,7 @@ for i:=@'177 to @'377 do xchr[i]:=i;
+ {Initialize enc\TeX\ data.}
+ for i:=0 to 255 do mubyte_read[i]:=null;
+ for i:=0 to 255 do mubyte_write[i]:=0;
+-for i:=0 to 128 do mubyte_cswrite[i]:=null;
++for i:=0 to 127 do mubyte_cswrite[i]:=null;
+ mubyte_keep := 0; mubyte_start := false;
+ write_noexpanding := false; cs_converting := false;
+ special_printing := false; message_printing := false;
