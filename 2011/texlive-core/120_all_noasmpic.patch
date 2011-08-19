@@ -1,0 +1,19 @@
+Use C code when -fPIC and on x86
+by Magnus Granberg zorry@gentoo.org
+https://bugs.gentoo.org/show_bug.cgi?id=195688
+
+Index: texlive-20110705-source/texk/web2c/lib/texmfmp.c
+===================================================================
+--- texlive-20110705-source.orig/texk/web2c/lib/texmfmp.c
++++ texlive-20110705-source/texk/web2c/lib/texmfmp.c
+@@ -2445,6 +2445,10 @@ makesrcspecial (strnumber srcfilename, i
+ #if defined (__sun__) || defined (__cplusplus)
+ #define NO_MF_ASM
+ #endif
++/* The assembler code is not PIC safe on i?86 so use C code.  */
++#if defined (__PIC__) && defined (__i386__)
++#define NO_MF_ASM
++#endif
+ #if defined(WIN32) && !defined(NO_MF_ASM) && !defined(__MINGW32__)
+ #include "lib/mfmpw32.c"
+ #elif defined (__i386__) && defined (__GNUC__) && !defined (NO_MF_ASM)
