@@ -1,0 +1,34 @@
+------------------------------------------------------------------------
+r24460 | peter | 2011-11-02 12:38:52 -0300 (Wed, 02 Nov 2011) | 1 line
+
+branch2011: import ttf2pk bug fix from trunk r24454
+------------------------------------------------------------------------
+Index: Build/source/texk/ttf2pk/ttf2pk.c
+===================================================================
+--- Build/source/texk/ttf2pk/ttf2pk.c	(revision 24459)
++++ Build/source/texk/ttf2pk/ttf2pk.c	(revision 24460)
+@@ -300,7 +300,8 @@
+   long inenc_array[256];
+   char *fontname;
+   size_t fontname_len;
+-  char *pk_filename, *tfm_filename, *enc_filename, *map_filename;
++  char *pk_filename, *tfm_filename, *enc_filename;
++  char *map_filename = NULL;
+   char *real_ttfname, *real_map_filename;
+   int dpi = 0, ptsize;
+   Boolean hinting = True;
+@@ -374,11 +375,14 @@
+   p = mapfiles;
+   while (*p)
+   {
++    if (map_filename)
++      free(map_filename);
+     map_filename = p;
+     while (*p != '\n')
+       p++;
+     *p++ = '\0';
+ 
++    map_filename = newstring(map_filename);
+     real_map_filename = TeX_search_map_file(&map_filename);
+     if (!real_map_filename)
+     {
