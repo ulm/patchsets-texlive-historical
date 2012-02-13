@@ -1,0 +1,29 @@
+http://sourceforge.net/tracker/?func=detail&aid=3484935&group_id=194926&atid=951385
+Date: 2012-02-10 16:22:57 PST
+Sender: drkp
+
+We also ran into this issue with MacPorts:
+http://trac.macports.org/ticket/33164
+
+The problem is that zlib 1.2.6 fixed the behavior of gzeof() to match that
+of feof(), but xetex relies on the old behavior when checking if a format
+file is valid. Accordingly, it rejects all formats as invalid.
+
+This patch removes the offending check; it makes xetex work fine with zlib
+1.2.6:
+http://svn.macports.org/repository/macports/trunk/dports/tex/texlive-bin/files/patch-texk_web2c_xetexdir_xetex.ch.diff
+
+https://bugs.gentoo.org/show_bug.cgi?id=401763
+
+Index: texlive-20110705-source/texk/web2c/xetexdir/xetex.ch
+===================================================================
+--- texlive-20110705-source.orig/texk/web2c/xetexdir/xetex.ch
++++ texlive-20110705-source/texk/web2c/xetexdir/xetex.ch
+@@ -6944,7 +6944,6 @@ if (x<>69069)or feof(fmt_file) then goto
+ @y
+ undump_int(x);
+ if (x<>69069) then goto bad_fmt;
+-if not w_eof(fmt_file) then goto bad_fmt
+ @z
+ 
+ @x
