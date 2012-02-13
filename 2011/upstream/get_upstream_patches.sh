@@ -4,7 +4,7 @@ LC_ALL=C
 # From which rev we should start pulling
 # IE: where our patches stop
 # 2011 branch starts at rev 23183
-INITIAL_REV=24461
+INITIAL_REV=24767
 SVNURI=svn://tug.org/texlive/branches/branch2011/
 TARGET_REV=`svn info $SVNURI | grep -i "^Revision" | cut -d" " -f2-`
 
