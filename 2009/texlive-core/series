@@ -1,8 +1,0 @@
-010_all_icu_CVE-2007-4770.patch
-020_all_poppler.patch
-030_all_installedscripts.patch
-040_all_texmfdirs.patch
-050_all_libpng14.patch -p0
-280_all_CVE-2010-0739.patch
-290_all_CVE-2010-0739,1440-integer-overflows.patch
-300_all_CVE-2010-0827.patch
