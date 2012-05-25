@@ -1,0 +1,17 @@
+Fix build with poppler-0.20
+By Rafał Mużyło
+https://bugs.gentoo.org/show_bug.cgi?id=416989
+
+Index: texlive-20110705-source/texk/web2c/pdftexdir/pdftosrc.cc
+===================================================================
+--- texlive-20110705-source.orig/texk/web2c/pdftexdir/pdftosrc.cc
++++ texlive-20110705-source/texk/web2c/pdftexdir/pdftosrc.cc
+@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
+         exit(1);
+     }
+     if (extract_xref_table) {
+-        int size = xref->getSize();
++        int size = xref->getNumObjects();
+         int i;
+         for (i = 0; i < size; i++) {
+             if (xref->getEntry(i)->offset == 0xffffffff)

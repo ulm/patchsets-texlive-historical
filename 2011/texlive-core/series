@@ -3,3 +3,4 @@
 080_all_a2ping_invocation.patch
 120_all_noasmpic.patch
 130_all_zlib126.patch
+140_all_poppler020.patch
