@@ -4,3 +4,4 @@
 120_all_noasmpic.patch
 130_all_zlib126.patch
 140_all_poppler020.patch
+150_all_texdoc_update.patch
