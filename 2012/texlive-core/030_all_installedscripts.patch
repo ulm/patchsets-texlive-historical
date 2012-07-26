@@ -22,7 +22,7 @@ Index: texlive-20120701-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
-@@ -233,90 +232,39 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+@@ -233,90 +232,38 @@ nobase_dist_texmf_scripts_SCRIPTS = \
  
  texmf_dist_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_dist_shell_scripts = \
@@ -50,7 +50,7 @@ Index: texlive-20120701-source/texk/texlive/linked_scripts/Makefile.in
 -	accfonts/mkt1font \
 -	accfonts/vpl2ovp \
 -	accfonts/vpl2vpl \
- 	authorindex/authorindex \
+-	authorindex/authorindex \
  	bundledoc/arlatex \
  	bundledoc/bundledoc \
 -	cachepic/cachepic.tlu \
