@@ -22,14 +22,14 @@ Index: texlive-20120701-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
-@@ -233,90 +232,38 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+@@ -233,90 +232,35 @@ nobase_dist_texmf_scripts_SCRIPTS = \
  
  texmf_dist_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_dist_shell_scripts = \
 -	bibexport/bibexport.sh \
  	installfont/installfont-tl \
  	latexfileversion/latexfileversion \
- 	listbib/listbib \
+-	listbib/listbib \
  	listings-ext/listings-ext.sh \
 -	pdfjam/pdf180 \
 -	pdfjam/pdf270 \
@@ -54,12 +54,12 @@ Index: texlive-20120701-source/texk/texlive/linked_scripts/Makefile.in
  	bundledoc/arlatex \
  	bundledoc/bundledoc \
 -	cachepic/cachepic.tlu \
- 	checkcites/checkcites.lua \
+-	checkcites/checkcites.lua \
 -	context/perl/mptopdf.pl \
  	ctanify/ctanify \
  	ctanupload/ctanupload.pl \
  	de-macro/de-macro \
- 	dosepsbin/dosepsbin.pl \
+-	dosepsbin/dosepsbin.pl \
  	dviasm/dviasm.py \
 -	ebong/ebong.py \
 -	epspdf/epspdf.rb \
@@ -133,3 +133,16 @@ Index: texlive-20120701-source/texk/texlive/context/Makefile.in
  
  dist_man1_MANS = \
  	context.man \
+Index: texlive-20120701-source/utils/mtx/Makefile.in
+===================================================================
+--- texlive-20120701-source.orig/utils/mtx/Makefile.in
++++ texlive-20120701-source/utils/mtx/Makefile.in
+@@ -301,7 +301,7 @@ libp2c_a_SOURCES = \
+ 	$(MTX_TREE)/libp2c/p2c.h \
+ 	$(MTX_TREE)/libp2c/p2clib.c
+ 
+-lua_scripts = m-tx
++lua_scripts =
+ scriptsdir = texmf-dist/scripts/m-tx
+ nodist_bin_SCRIPTS = $(am__append_1)
+ all_scripts = $(lua_scripts) $(perl_scripts) $(shell_scripts)
