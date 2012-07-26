@@ -1,0 +1,135 @@
+Remove the texmf scripts we install via dev-texlive/* ebuilds.
+
+Index: texlive-20120701-source/texk/texlive/linked_scripts/Makefile.in
+===================================================================
+--- texlive-20120701-source.orig/texk/texlive/linked_scripts/Makefile.in
++++ texlive-20120701-source/texk/texlive/linked_scripts/Makefile.in
+@@ -217,15 +217,14 @@ bin_SCRIPTS =
+ #
+ texmf_scriptsdir = $(datarootdir)/texmf/scripts
+ texmf_shell_scripts = \
+-	simpdftex/simpdftex
++
+ 
+ texmf_other_scripts = \
+ 	a2ping/a2ping.pl \
+ 	tetex/e2pall.pl \
+ 	tetex/texdoctk.pl \
+ 	texdoc/texdoc.tlu \
+-	texlive/rungs.tlu \
+-	texlive/tlmgr.pl
++
+ 
+ nobase_dist_texmf_scripts_SCRIPTS = \
+ 	$(texmf_shell_scripts) \
+@@ -233,90 +232,39 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+ 
+ texmf_dist_scriptsdir = $(datarootdir)/texmf-dist/scripts
+ texmf_dist_shell_scripts = \
+-	bibexport/bibexport.sh \
+ 	installfont/installfont-tl \
+ 	latexfileversion/latexfileversion \
+ 	listbib/listbib \
+ 	listings-ext/listings-ext.sh \
+-	pdfjam/pdf180 \
+-	pdfjam/pdf270 \
+-	pdfjam/pdf90 \
+-	pdfjam/pdfbook \
+-	pdfjam/pdfflip \
+-	pdfjam/pdfjam \
+-	pdfjam/pdfjam-pocketmod \
+-	pdfjam/pdfjam-slides3up \
+-	pdfjam/pdfjam-slides6up \
+-	pdfjam/pdfjoin \
+-	pdfjam/pdfnup \
+-	pdfjam/pdfpun \
+-	pst-pdf/ps4pdf \
+ 	typeoutfileinfo/typeoutfileinfo.sh
+ 
+ texmf_dist_other_scripts = \
+-	accfonts/mkt1font \
+-	accfonts/vpl2ovp \
+-	accfonts/vpl2vpl \
+ 	authorindex/authorindex \
+ 	bundledoc/arlatex \
+ 	bundledoc/bundledoc \
+-	cachepic/cachepic.tlu \
+ 	checkcites/checkcites.lua \
+-	context/perl/mptopdf.pl \
+ 	ctanify/ctanify \
+ 	ctanupload/ctanupload.pl \
+ 	de-macro/de-macro \
+ 	dosepsbin/dosepsbin.pl \
+ 	dviasm/dviasm.py \
+-	ebong/ebong.py \
+-	epspdf/epspdf.rb \
+-	epspdf/epspdftk.tcl \
+-	epstopdf/epstopdf.pl \
+-	exceltex/exceltex \
+-	fig4latex/fig4latex \
+ 	findhyph/findhyph \
+-	fontools/afm2afm \
+-	fontools/autoinst \
+-	fontools/ot2kpx \
+ 	fragmaster/fragmaster.pl \
+-	glossaries/makeglossaries \
+-	jfontmaps/updmap-setup-kanji.pl \
+ 	latex2man/latex2man \
+-	latexdiff/latexdiff.pl \
+-	latexdiff/latexdiff-vc.pl \
+-	latexdiff/latexrevise.pl \
+-	latexmk/latexmk.pl \
+-	luaotfload/mkluatexfontdb.lua \
+ 	match_parens/match_parens \
+-	mathspic/mathspic.pl \
+-	mf2pt1/mf2pt1.pl \
+ 	mkjobtexmf/mkjobtexmf.pl \
+-	mkgrkindex/mkgrkindex \
+-	musixtex/musixflx.lua \
+-	musixtex/musixtex.lua \
+-	oberdiek/pdfatfi.pl \
+-	pax/pdfannotextractor.pl \
+ 	pdfcrop/pdfcrop.pl \
+-	pedigree-perl/pedigree.pl \
+-	perltex/perltex.pl \
+ 	pkfix/pkfix.pl \
+ 	pkfix-helper/pkfix-helper \
+-	pst2pdf/pst2pdf \
+ 	purifyeps/purifyeps \
+-	splitindex/perl/splitindex.pl \
+ 	sty2dtx/sty2dtx.pl \
+-	svn-multi/svn-multi.pl \
+ 	texcount/texcount.pl \
+ 	texdef/texdef.pl \
+ 	texdiff/texdiff \
+ 	texdirflatten/texdirflatten \
+ 	texliveonfly/texliveonfly.py \
+ 	texloganalyser/texloganalyser \
+-	thumbpdf/thumbpdf.pl \
+-	ulqda/ulqda.pl \
+-	uptex/convbkmk.rb \
+-	urlbst/urlbst \
+-	vpe/vpe.pl
++
+ 
+ nobase_dist_texmf_dist_scripts_SCRIPTS = \
+ 	$(texmf_dist_shell_scripts) \
+Index: texlive-20120701-source/texk/texlive/context/Makefile.in
+===================================================================
+--- texlive-20120701-source.orig/texk/texlive/context/Makefile.in
++++ texlive-20120701-source/texk/texlive/context/Makefile.in
+@@ -188,13 +188,7 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ @WIN32_FALSE@dist_bin_SCRIPTS = \
+-@WIN32_FALSE@	context \
+-@WIN32_FALSE@	ctxtools \
+-@WIN32_FALSE@	luatools \
+-@WIN32_FALSE@	mtxrun \
+-@WIN32_FALSE@	pstopdf \
+-@WIN32_FALSE@	texexec \
+-@WIN32_FALSE@	texmfstart
++@WIN32_FALSE@
+ 
+ dist_man1_MANS = \
+ 	context.man \
