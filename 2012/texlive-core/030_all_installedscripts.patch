@@ -146,3 +146,16 @@ Index: texlive-20120701-source/utils/mtx/Makefile.in
  scriptsdir = texmf-dist/scripts/m-tx
  nodist_bin_SCRIPTS = $(am__append_1)
  all_scripts = $(lua_scripts) $(perl_scripts) $(shell_scripts)
+Index: texlive-20120701-source/utils/pmx/Makefile.in
+===================================================================
+--- texlive-20120701-source.orig/utils/pmx/Makefile.in
++++ texlive-20120701-source/utils/pmx/Makefile.in
+@@ -485,7 +485,7 @@ EXTRA_libf2c_a_SOURCES = $(PMX_TREE)/lib
+ 	$(PMX_TREE)/libf2c/ftell64_.c $(PMX_TREE)/libf2c/pow_qq.c \
+ 	$(PMX_TREE)/libf2c/qbitbits.c $(PMX_TREE)/libf2c/qbitshft.c \
+ 	$(PMX_TREE)/libf2c/signbit.c
+-lua_scripts = pmx2pdf
++lua_scripts =
+ scriptsdir = texmf-dist/scripts/pmx
+ nodist_bin_SCRIPTS = $(am__append_2)
+ all_scripts = $(lua_scripts) $(perl_scripts) $(shell_scripts)
