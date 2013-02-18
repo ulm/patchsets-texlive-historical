@@ -1,2 +1,3 @@
 030_all_installedscripts.patch
 080_all_a2ping_invocation.patch
+090_all_updmap_normalize.patch
