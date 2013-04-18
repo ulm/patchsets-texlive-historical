@@ -1,0 +1,16 @@
+Increase temp buffer size to avoid FORTIFY_SOURCE warnings.
+https://bugs.gentoo.org/show_bug.cgi?id=465748
+
+Index: texlive-20120701-source/libs/icu/icu-49.1/tools/pkgdata/pkgdata.cpp
+===================================================================
+--- texlive-20120701-source.orig/libs/icu/icu-49.1/tools/pkgdata/pkgdata.cpp
++++ texlive-20120701-source/libs/icu/icu-49.1/tools/pkgdata/pkgdata.cpp
+@@ -1909,7 +1909,7 @@ static void loadLists(UPKGOptions *o, UE
+     FILE *p = NULL;
+     size_t n;
+     static char buf[512] = "";
+-    char cmdBuf[1024];
++    char cmdBuf[2048];
+     UErrorCode status = U_ZERO_ERROR;
+     const char cmd[] = "icu-config --incpkgdatafile";
+ 
