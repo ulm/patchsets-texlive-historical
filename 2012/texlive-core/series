@@ -2,3 +2,4 @@
 080_all_a2ping_invocation.patch
 090_all_updmap_normalize.patch
 100_all_icu_pkgdata_buffer.patch
+120_all_icu_sparc.patch

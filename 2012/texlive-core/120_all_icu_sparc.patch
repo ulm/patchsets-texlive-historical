@@ -1,0 +1,21 @@
+Grabbed from the diff between icu 49.1.2 and icu 51.1
+https://bugs.gentoo.org/show_bug.cgi?id=466700
+
+Fix (bundled) icu build on sparc.
+
+
+Index: texlive-20120701-source/libs/icu/icu-49.1/common/unicode/platform.h
+===================================================================
+--- texlive-20120701-source.orig/libs/icu/icu-49.1/common/unicode/platform.h
++++ texlive-20120701-source/libs/icu/icu-49.1/common/unicode/platform.h
+@@ -349,6 +349,10 @@
+ #elif U_PLATFORM == U_PF_OS390 || U_PLATFORM == U_PF_OS400
+     /* These platforms do not appear to predefine any endianness macros. */
+ #   define U_IS_BIG_ENDIAN 1
++#elif defined(sparc) || defined(__sparc) || defined(__sparc__)
++   /* Some sparc based systems (e.g. Linux) do not predefine any endianness
++    * macros. */
++#   define U_IS_BIG_ENDIAN 1
+ #else
+ #   define U_IS_BIG_ENDIAN 0
+ #endif
