@@ -2,7 +2,7 @@ Index: texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20130530-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
-@@ -226,118 +226,49 @@ EXTRA_DIST = scripts.lst ../../../build-
+@@ -226,128 +226,55 @@ EXTRA_DIST = scripts.lst ../../../build-
  texmf_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_shell_scripts = \
  	adhocfilelist/adhocfilelist.sh \
@@ -42,7 +42,7 @@ Index: texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
 -	cachepic/cachepic.tlu \
 -	checkcites/checkcites.lua \
 -	context/perl/mptopdf.pl \
- 	convbkmk/convbkmk.rb \
+-	convbkmk/convbkmk.rb \
  	ctanify/ctanify \
  	ctanupload/ctanupload.pl \
  	de-macro/de-macro \
@@ -123,3 +123,30 @@ Index: texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
+ 	$(texmf_other_scripts) \
+ 	$(texmf_context_scripts)
+ 
+-bin_links = \
+-	epstopdf:repstopdf \
+-	pdfcrop:rpdfcrop \
+-	luaotfload-tool:mkluatexfontdb
++bin_links =
+ 
+ relpath = $(SHELL) $(top_srcdir)/../../build-aux/relpath
+ runscript = $(top_srcdir)/w32_wrapper/runscript.exe
+Index: texlive-20130530-source/texk/texlive/tl_scripts/Makefile.in
+===================================================================
+--- texlive-20130530-source.orig/texk/texlive/tl_scripts/Makefile.in
++++ texlive-20130530-source/texk/texlive/tl_scripts/Makefile.in
+@@ -223,11 +223,8 @@ sh_scripts = \
+ 	dvi2fax \
+ 	dvired \
+ 	fmtutil \
+-	fontinst \
+ 	kpsetool \
+ 	kpsewhere \
+-	ps2frag \
+-	pslatex \
+ 	rubibtex \
+ 	rumakeindex \
+ 	texconfig-dialog \
