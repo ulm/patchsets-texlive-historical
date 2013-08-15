@@ -2,7 +2,7 @@ Index: texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20130530-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
-@@ -226,128 +226,52 @@ EXTRA_DIST = scripts.lst ../../../build-
+@@ -226,128 +226,51 @@ EXTRA_DIST = scripts.lst ../../../build-
  texmf_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_shell_scripts = \
  	adhocfilelist/adhocfilelist.sh \
@@ -35,7 +35,7 @@ Index: texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
 -	accfonts/mkt1font \
 -	accfonts/vpl2ovp \
 -	accfonts/vpl2vpl \
- 	arara/arara.sh \
+-	arara/arara.sh \
 -	authorindex/authorindex \
  	bundledoc/arlatex \
  	bundledoc/bundledoc \
@@ -130,7 +130,7 @@ Index: texlive-20130530-source/texk/texlive/linked_scripts/Makefile.in
 -	epstopdf:repstopdf \
 -	pdfcrop:rpdfcrop \
 -	luaotfload-tool:mkluatexfontdb
-+bin_links =
++bin_links = pdfcrop:rpdfcrop
  
  relpath = $(SHELL) $(top_srcdir)/../../build-aux/relpath
  runscript = $(top_srcdir)/w32_wrapper/runscript.exe
