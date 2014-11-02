@@ -1,0 +1,169 @@
+Index: texlive-20140525-source/texk/texlive/tl_scripts/Makefile.in
+===================================================================
+--- texlive-20140525-source.orig/texk/texlive/tl_scripts/Makefile.in
++++ texlive-20140525-source/texk/texlive/tl_scripts/Makefile.in
+@@ -252,13 +252,8 @@ sh_scripts = \
+ 	dvi2fax \
+ 	dvired \
+ 	fmtutil \
+-	fontinst \
+ 	kpsetool \
+ 	kpsewhere \
+-	ps2frag \
+-	pslatex \
+-	rubibtex \
+-	rumakeindex \
+ 	texconfig-dialog \
+ 	texconfig-sys \
+ 	texconfig \
+Index: texlive-20140525-source/texk/texlive/linked_scripts/Makefile.in
+===================================================================
+--- texlive-20140525-source.orig/texk/texlive/linked_scripts/Makefile.in
++++ texlive-20140525-source/texk/texlive/linked_scripts/Makefile.in
+@@ -256,143 +256,57 @@ EXTRA_DIST = scripts.lst context/stubs/u
+ texmf_scriptsdir = $(datarootdir)/texmf-dist/scripts
+ texmf_shell_scripts = \
+ 	adhocfilelist/adhocfilelist.sh \
+-	bibexport/bibexport.sh \
+ 	dtxgen/dtxgen \
+ 	installfont/installfont-tl \
+ 	latexfileversion/latexfileversion \
+-	listbib/listbib \
+ 	listings-ext/listings-ext.sh \
+ 	ltxfileinfo/ltxfileinfo \
+-	lua2dox/lua2dox_filter \
+-	pdfjam/pdf180 \
+-	pdfjam/pdf270 \
+-	pdfjam/pdf90 \
+-	pdfjam/pdfbook \
+-	pdfjam/pdfflip \
+-	pdfjam/pdfjam \
+-	pdfjam/pdfjam-pocketmod \
+-	pdfjam/pdfjam-slides3up \
+-	pdfjam/pdfjam-slides6up \
+-	pdfjam/pdfjoin \
+-	pdfjam/pdfnup \
+-	pdfjam/pdfpun \
+-	pst-pdf/ps4pdf \
+-	simpdftex/simpdftex \
+ 	typeoutfileinfo/typeoutfileinfo.sh
+ 
+ texmf_other_scripts = \
+ 	a2ping/a2ping.pl \
+-	accfonts/mkt1font \
+-	accfonts/vpl2ovp \
+-	accfonts/vpl2vpl \
+-	arara/arara.sh \
+-	authorindex/authorindex \
+ 	bundledoc/arlatex \
+ 	bundledoc/bundledoc \
+-	cachepic/cachepic.tlu \
+-	checkcites/checkcites.lua \
+-	context/perl/mptopdf.pl \
+-	convbkmk/convbkmk.rb \
+ 	ctanify/ctanify \
+ 	ctanupload/ctanupload.pl \
+ 	de-macro/de-macro \
+-	dosepsbin/dosepsbin.pl \
+ 	dviasm/dviasm.py \
+-	ebong/ebong.py \
+-	epspdf/epspdf.tlu \
+-	epspdf/epspdftk.tcl \
+-	epstopdf/epstopdf.pl \
+-	exceltex/exceltex \
+-	fig4latex/fig4latex \
+ 	findhyph/findhyph \
+-	fontools/afm2afm \
+-	fontools/autoinst \
+-	fontools/ot2kpx \
+ 	fragmaster/fragmaster.pl \
+-	glossaries/makeglossaries \
+-	jfontmaps/kanji-fontmap-creator.pl \
+-	jfontmaps/kanji-config-updmap.pl \
+-	jfontmaps/kanji-config-updmap-sys.sh \
+-	kotex-utils/jamo-normalize.pl \
+-	kotex-utils/komkindex.pl \
+-	kotex-utils/ttf2kotexfont.pl \
+ 	latex-git-log/latex-git-log \
+ 	latex2man/latex2man \
+-	latexdiff/latexdiff.pl \
+-	latexdiff/latexdiff-vc.pl \
+-	latexdiff/latexrevise.pl \
+ 	latexindent/latexindent.pl \
+-	latexmk/latexmk.pl \
+ 	latexpand/latexpand \
+-	lilyglyphs/lily-glyph-commands.py \
+-	lilyglyphs/lily-image-commands.py \
+-	lilyglyphs/lily-rebuild-pdfs.py \
+ 	ltximg/ltximg.pl \
+-	luaotfload/luaotfload-tool.lua \
+-	m-tx/m-tx.lua \
+ 	match_parens/match_parens \
+-	mathspic/mathspic.pl \
+-	mf2pt1/mf2pt1.pl \
+ 	mkjobtexmf/mkjobtexmf.pl \
+-	mkgrkindex/mkgrkindex \
+-	mkpic/mkpic \
+-	multibibliography/multibibliography.pl \
+-	musixtex/musixflx.lua \
+-	musixtex/musixtex.lua \
+-	oberdiek/pdfatfi.pl \
+-	pax/pdfannotextractor.pl \
+ 	pdfcrop/pdfcrop.pl \
+-	pedigree-perl/pedigree.pl \
+-	perltex/perltex.pl \
+ 	pfarrei/pfarrei.tlu \
+ 	pfarrei/a5toa4.tlu \
+ 	pkfix/pkfix.pl \
+ 	pkfix-helper/pkfix-helper \
+-	pmx/pmx2pdf.lua \
+-	pmxchords/pmxchords.lua \
+-	pst2pdf/pst2pdf.pl \
+-	ptex2pdf/ptex2pdf.lua \
+ 	purifyeps/purifyeps \
+ 	pythontex/pythontex.py \
+ 	pythontex/depythontex.py \
+-	rubik/rubikrotation.pl \
+-	splitindex/splitindex.pl \
+ 	sty2dtx/sty2dtx.pl \
+-	svn-multi/svn-multi.pl \
+ 	texdoc/texdoc.tlu \
+ 	texcount/texcount.pl \
+ 	texdef/texdef.pl \
+ 	texdiff/texdiff \
+ 	texdirflatten/texdirflatten \
+ 	texfot/texfot.pl \
+-	texlive/rungs.tlu \
+-	texlive/tlmgr.pl \
+ 	texlive/updmap.pl \
+ 	texliveonfly/texliveonfly.py \
+-	texloganalyser/texloganalyser \
+-	thumbpdf/thumbpdf.pl \
+-	ulqda/ulqda.pl \
+-	urlbst/urlbst \
+-	vpe/vpe.pl
++	texloganalyser/texloganalyser
+ 
+-texmf_context_scripts = \
+-	context/stubs/unix/context \
+-	context/stubs/unix/contextjit \
+-	context/stubs/unix/luatools \
+-	context/stubs/unix/mtxrun \
+-	context/stubs/unix/mtxrunjit \
+-	context/stubs/unix/texexec \
+-	context/stubs/unix/texmfstart
++texmf_context_scripts =
+ 
+ nobase_dist_texmf_scripts_SCRIPTS = \
+ 	$(texmf_shell_scripts) \
+ 	$(texmf_other_scripts) \
+ 	$(texmf_context_scripts)
+ 
+-bin_links = \
+-	epstopdf:repstopdf \
+-	pdfcrop:rpdfcrop \
+-	luaotfload-tool:mkluatexfontdb
++bin_links = pdfcrop:rpdfcrop
+ 
+ relpath = $(SHELL) $(top_srcdir)/../../build-aux/relpath
+ runscript = $(top_srcdir)/w32_wrapper/runscript.exe
