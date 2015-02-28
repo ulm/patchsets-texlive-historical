@@ -1,0 +1,23 @@
+utils/pmx/pmx-2.7.0/libf2c/f2c.h: remove unnecesary macro for abs()
+
+On POSIX systems, abs() is a function provided by your C Standard library,
+so we don't need to define it as a macro.  It is dangerous to do so because
+if f2c.h is included before stdlib.h, then then macro breaks the function
+prototype.
+
+We just remove it.  See
+
+https://bugs.gentoo.org/show_bug.cgi?id=510770
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+
+--- utils/pmx/pmx-2.7.0/libf2c/f2c.h.orig	2013-01-18 02:59:22.000000000 -0500
++++ utils/pmx/pmx-2.7.0/libf2c/f2c.h	2015-02-28 12:13:56.352201310 -0500
+@@ -162,7 +162,6 @@
+ 	};
+ typedef struct Namelist Namelist;
+ 
+-#define abs(x) ((x) >= 0 ? (x) : -(x))
+ #define dabs(x) (doublereal)abs(x)
+ #undef  min
+ #undef  max
