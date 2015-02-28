@@ -3,3 +3,4 @@
 090_all_updmap_normalize.patch
 100_all_icu_pkgdata_buffer.patch
 120_all_icu_sparc.patch
+130_all_remove_define_abs.patch
