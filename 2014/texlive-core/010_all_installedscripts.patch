@@ -20,7 +20,7 @@ Index: texlive-20140525-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20140525-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20140525-source/texk/texlive/linked_scripts/Makefile.in
-@@ -256,143 +256,57 @@ EXTRA_DIST = scripts.lst context/stubs/u
+@@ -256,143 +256,55 @@
  texmf_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_shell_scripts = \
  	adhocfilelist/adhocfilelist.sh \
@@ -121,8 +121,8 @@ Index: texlive-20140525-source/texk/texlive/linked_scripts/Makefile.in
 -	pst2pdf/pst2pdf.pl \
 -	ptex2pdf/ptex2pdf.lua \
  	purifyeps/purifyeps \
- 	pythontex/pythontex.py \
- 	pythontex/depythontex.py \
+-	pythontex/pythontex.py \
+-	pythontex/depythontex.py \
 -	rubik/rubikrotation.pl \
 -	splitindex/splitindex.pl \
  	sty2dtx/sty2dtx.pl \
