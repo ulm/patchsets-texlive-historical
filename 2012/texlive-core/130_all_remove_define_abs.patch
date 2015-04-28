@@ -1,24 +1,28 @@
-utils/pmx/pmx-2.6.18/libf2c/f2c.h: remove unnecesary macro for abs()
+utils/pmx/pmx-2.7.0/libf2c/f2c.h: remove unnecesary macro for abs()
 
 On POSIX systems, abs() is a function provided by your C Standard library,
 so we don't need to define it as a macro.  It is dangerous to do so because
 if f2c.h is included before stdlib.h, then then macro breaks the function
 prototype.
 
-We just remove it.  See
+See
 
 https://bugs.gentoo.org/show_bug.cgi?id=510770
 
+Signed-off-by: Felix Janda <felix.janda@posteo.de>
 Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
 
-diff -Naur texlive-20120701-source.orig/utils/pmx/pmx-2.6.18/libf2c/f2c.h texlive-20120701-source/utils/pmx/pmx-2.6.18/libf2c/f2c.h
---- texlive-20120701-source.orig/utils/pmx/pmx-2.6.18/libf2c/f2c.h	2012-05-20 10:47:27.000000000 +0000
-+++ texlive-20120701-source/utils/pmx/pmx-2.6.18/libf2c/f2c.h	2014-05-15 17:16:37.030402773 +0000
-@@ -157,7 +157,6 @@
+diff -ur a/texlive-20120701-source/utils/pmx/pmx-2.6.18/libf2c/f2c.h b/texlive-20120701-source/utils/pmx/pmx-2.6.18/libf2c/f2c.h
+--- a/texlive-20120701-source/utils/pmx/pmx-2.6.18/libf2c/f2c.h	2012-05-20 12:47:27.000000000 -0200
++++ b/texlive-20120701-source/utils/pmx/pmx-2.6.18/libf2c/f2c.h	2015-04-11 17:10:01.710633750 -0200
+@@ -157,8 +157,8 @@
  	};
  typedef struct Namelist Namelist;
  
 -#define abs(x) ((x) >= 0 ? (x) : -(x))
- #define dabs(x) (doublereal)abs(x)
+-#define dabs(x) (doublereal)abs(x)
++extern int abs(int x);
++#define dabs(x) ((doublereal)((x) >= 0 ? (x) : -(x)))
  #define min(a,b) ((a) <= (b) ? (a) : (b))
  #define max(a,b) ((a) >= (b) ? (a) : (b))
+ #define dmin(a,b) (doublereal)min(a,b)
