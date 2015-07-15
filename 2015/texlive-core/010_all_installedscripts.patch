@@ -2,8 +2,11 @@ Index: texlive-20150521-source/texk/texlive/tl_scripts/Makefile.in
 ===================================================================
 --- texlive-20150521-source.orig/texk/texlive/tl_scripts/Makefile.in
 +++ texlive-20150521-source/texk/texlive/tl_scripts/Makefile.in
-@@ -265,10 +265,6 @@ sh_scripts = \
- 	fontinst \
+@@ -262,13 +262,8 @@ sh_scripts = \
+ 	allneeded \
+ 	dvi2fax \
+ 	dvired \
+-	fontinst \
  	kpsetool \
  	kpsewhere \
 -	ps2frag \
@@ -13,11 +16,25 @@ Index: texlive-20150521-source/texk/texlive/tl_scripts/Makefile.in
  	texconfig-dialog \
  	texconfig-sys \
  	texconfig \
+@@ -292,13 +287,8 @@ dist_man_MANS = \
+ 	e2pall.1 \
+ 	fmtutil.1 \
+ 	fmtutil.cnf.5 \
+-	fontinst.1 \
+ 	kpsetool.1 \
+ 	kpsewhere.1 \
+-	ps2frag.1 \
+-	pslatex.1 \
+-	rubibtex.1 \
+-	rumakeindex.1 \
+ 	texconfig.1 \
+ 	texlinks.1 \
+ 	updmap.1 \
 Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20150521-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
-@@ -268,43 +268,18 @@ EXTRA_DIST = scripts.lst context/stubs/u
+@@ -268,115 +268,41 @@ EXTRA_DIST = scripts.lst context/stubs/u
  texmf_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_shell_scripts = \
  	adhocfilelist/adhocfilelist.sh \
@@ -58,10 +75,10 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
 -	checkcites/checkcites.lua \
  	cjk-gs-integrate/cjk-gs-integrate.pl \
 -	context/perl/mptopdf.pl \
- 	convbkmk/convbkmk.rb \
+-	convbkmk/convbkmk.rb \
  	crossrefware/bibdoiadd.pl \
  	crossrefware/bibzbladd.pl \
-@@ -312,71 +287,24 @@ texmf_other_scripts = \
+ 	crossrefware/ltx2crossrefxml.pl \
  	ctanify/ctanify \
  	ctanupload/ctanupload.pl \
  	de-macro/de-macro \
@@ -127,13 +144,13 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
 -	pythontex/pythontex.py \
 -	pythontex/depythontex.py \
 -	rubik/rubikrotation.pl \
- 	splitindex/splitindex.pl \
+-	splitindex/splitindex.pl \
  	sty2dtx/sty2dtx.pl \
 -	svn-multi/svn-multi.pl \
  	texdoc/texdoc.tlu \
  	texcount/texcount.pl \
  	texdef/texdef.pl \
-@@ -385,26 +313,15 @@ texmf_other_scripts = \
+@@ -385,26 +311,13 @@ texmf_other_scripts = \
  	texfot/texfot.pl \
  	texlive/fmtutil.pl \
  	texlive/fmtutil-sys.sh \
@@ -142,13 +159,13 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
  	texlive/updmap.pl \
  	texlive/updmap-sys.sh \
  	texliveonfly/texliveonfly.py \
- 	texloganalyser/texloganalyser \
+-	texloganalyser/texloganalyser \
 -	thumbpdf/thumbpdf.pl \
 -	ulqda/ulqda.pl \
- 	urlbst/urlbst \
+-	urlbst/urlbst \
 -	vpe/vpe.pl \
 -	yplan/yplan
-+	vpe/vpe.pl
++	texloganalyser/texloganalyser
  
 -texmf_context_scripts = \
 -	context/stubs/unix/context \
@@ -162,7 +179,7 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
-@@ -412,7 +329,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+@@ -412,7 +325,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_context_scripts)
  
  bin_links = \
