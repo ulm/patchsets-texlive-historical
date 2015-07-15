@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/show_bug.cgi?id=428350
+Normalize the path here too otherwise it may fail.
+
+Index: texlive-20150521-source/texmf-dist/scripts/texlive/updmap.pl
+===================================================================
+--- texlive-20150521-source.orig/texmf-dist/scripts/texlive/updmap.pl
++++ texlive-20150521-source/texmf-dist/scripts/texlive/updmap.pl
+@@ -1434,7 +1434,7 @@ sub setOptions {
+ 
+ sub enable_disable_maps {
+   my (@what) = @_;
+-  my $tc = $alldata->{'changes_config'};
++  my $tc = Cwd::abs_path($alldata->{'changes_config'});
+   die "$prg: top config file $tc has not been read."
+     if (!defined($alldata->{'updmap'}{$tc}));
+   my $changed = 0;
