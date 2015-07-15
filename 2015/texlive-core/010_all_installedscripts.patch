@@ -34,7 +34,7 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20150521-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
-@@ -268,115 +268,40 @@ EXTRA_DIST = scripts.lst context/stubs/u
+@@ -268,115 +268,37 @@ EXTRA_DIST = scripts.lst context/stubs/u
  texmf_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_shell_scripts = \
  	adhocfilelist/adhocfilelist.sh \
@@ -76,9 +76,9 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
 -	cjk-gs-integrate/cjk-gs-integrate.pl \
 -	context/perl/mptopdf.pl \
 -	convbkmk/convbkmk.rb \
- 	crossrefware/bibdoiadd.pl \
- 	crossrefware/bibzbladd.pl \
- 	crossrefware/ltx2crossrefxml.pl \
+-	crossrefware/bibdoiadd.pl \
+-	crossrefware/bibzbladd.pl \
+-	crossrefware/ltx2crossrefxml.pl \
  	ctanify/ctanify \
  	ctanupload/ctanupload.pl \
  	de-macro/de-macro \
@@ -150,7 +150,7 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
  	texdoc/texdoc.tlu \
  	texcount/texcount.pl \
  	texdef/texdef.pl \
-@@ -385,26 +310,13 @@ texmf_other_scripts = \
+@@ -385,26 +307,13 @@ texmf_other_scripts = \
  	texfot/texfot.pl \
  	texlive/fmtutil.pl \
  	texlive/fmtutil-sys.sh \
@@ -179,7 +179,7 @@ Index: texlive-20150521-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
-@@ -412,7 +324,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+@@ -412,7 +321,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_context_scripts)
  
  bin_links = \
