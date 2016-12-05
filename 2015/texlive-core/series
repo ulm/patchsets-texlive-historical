@@ -2,3 +2,4 @@
 020_all_a2ping_invocation.patch
 030_all_updmap_normalize.patch
 040_all_remove_define_abs.patch
+050_all_latex2man_predictable_tmp.patch
