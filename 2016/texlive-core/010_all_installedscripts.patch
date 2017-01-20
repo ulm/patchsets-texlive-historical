@@ -34,7 +34,7 @@ Index: texlive-20160523-source/texk/texlive/linked_scripts/Makefile.in
 ===================================================================
 --- texlive-20160523-source.orig/texk/texlive/linked_scripts/Makefile.in
 +++ texlive-20160523-source/texk/texlive/linked_scripts/Makefile.in
-@@ -268,124 +268,46 @@ EXTRA_DIST = scripts.lst context/stubs/u
+@@ -268,124 +268,45 @@ EXTRA_DIST = scripts.lst context/stubs/u
  texmf_scriptsdir = $(datarootdir)/texmf-dist/scripts
  texmf_shell_scripts = \
  	adhocfilelist/adhocfilelist.sh \
@@ -85,7 +85,7 @@ Index: texlive-20160523-source/texk/texlive/linked_scripts/Makefile.in
  	ctanify/ctanify \
  	ctanupload/ctanupload.pl \
  	de-macro/de-macro \
- 	diadia/diadia.lua \
+-	diadia/diadia.lua \
 -	dosepsbin/dosepsbin.pl \
  	dviasm/dviasm.py \
 -	ebong/ebong.py \
@@ -159,7 +159,7 @@ Index: texlive-20160523-source/texk/texlive/linked_scripts/Makefile.in
  	tex4ebook/tex4ebook \
  	texcount/texcount.pl \
  	texdef/texdef.pl \
-@@ -395,26 +317,13 @@ texmf_other_scripts = \
+@@ -395,26 +316,13 @@ texmf_other_scripts = \
  	texfot/texfot.pl \
  	texlive/fmtutil-sys.sh \
  	texlive/fmtutil.pl \
@@ -188,7 +188,7 @@ Index: texlive-20160523-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
-@@ -422,7 +331,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+@@ -422,7 +330,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_context_scripts)
  
  bin_links = \
