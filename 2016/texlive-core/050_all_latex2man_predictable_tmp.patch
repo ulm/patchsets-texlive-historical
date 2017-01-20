@@ -1,0 +1,26 @@
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=668779
+https://bugs.gentoo.org/show_bug.cgi?id=432144
+CVE-2012-2120 (http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2120)
+
+Index: texlive-20160523-source/texmf-dist/scripts/latex2man/latex2man
+===================================================================
+--- texlive-20160523-source.orig/texmf-dist/scripts/latex2man/latex2man
++++ texlive-20160523-source/texmf-dist/scripts/latex2man/latex2man
+@@ -29,8 +29,6 @@ sub date2str;
+ $VERSION = "1.24";
+ $DATE    = date2str ('$Date: 2017/01/20 13:36:23 $' =~ m|(\d+/\d+/\d+)|);
+ 
+-$tmp = "/tmp/$CMD.$$";
+-
+ ##################################################################
+ # check option and arguments
+ ##################################################################
+@@ -124,6 +122,8 @@ $SrcFile  = $ARGV[0];
+ $DestFile = $ARGV[1];
+ open (SRC,  "<$SrcFile")  || die "$CMD: Can't open file \`$SrcFile' for reading.\n";
+ if ($opt_H || $opt_T) {
++    $tmp = `mktemp` || die;
++    chomp $tmp;
+     # DestFile will be written in the postprocess
+     open (DEST, ">$tmp")      || die "$CMD: Can't open file \`$tmp' for writing.\n";
+ } else {
