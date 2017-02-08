@@ -8,7 +8,7 @@ Index: texlive-20160523-source/texmf-dist/scripts/latex2man/latex2man
 +++ texlive-20160523-source/texmf-dist/scripts/latex2man/latex2man
 @@ -29,8 +29,6 @@ sub date2str;
  $VERSION = "1.24";
- $DATE    = date2str ('$Date: 2017/01/20 13:36:23 $' =~ m|(\d+/\d+/\d+)|);
+ $DATE    = date2str ('$Date: 2017/02/08 17:20:54 $' =~ m|(\d+/\d+/\d+)|);
  
 -$tmp = "/tmp/$CMD.$$";
 -
