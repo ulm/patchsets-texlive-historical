@@ -159,12 +159,12 @@ Index: texlive-20160523-source/texk/texlive/linked_scripts/Makefile.in
  	tex4ebook/tex4ebook \
  	texcount/texcount.pl \
  	texdef/texdef.pl \
-@@ -395,26 +314,13 @@ texmf_other_scripts = \
+@@ -395,26 +314,12 @@ texmf_other_scripts = \
  	texfot/texfot.pl \
  	texlive/fmtutil-sys.sh \
  	texlive/fmtutil.pl \
 -	texlive/rungs.tlu \
- 	texlive/tlmgr.pl \
+-	texlive/tlmgr.pl \
  	texlive/updmap-sys.sh \
  	texlive/updmap.pl \
  	texliveonfly/texliveonfly.py \
@@ -188,7 +188,7 @@ Index: texlive-20160523-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
-@@ -422,7 +328,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+@@ -422,7 +327,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_context_scripts)
  
  bin_links = \
