@@ -66,7 +66,7 @@ Index: texlive-20170524-source/texk/texlive/linked_scripts/Makefile.in
  	texosquery/texosquery.sh \
  	texosquery/texosquery-jre5.sh \
  	texosquery/texosquery-jre8.sh \
-@@ -300,101 +283,37 @@ texmf_shell_scripts = \
+@@ -300,101 +283,36 @@ texmf_shell_scripts = \
  
  texmf_other_scripts = \
  	a2ping/a2ping.pl \
@@ -125,7 +125,7 @@ Index: texlive-20170524-source/texk/texlive/linked_scripts/Makefile.in
 -	lilyglyphs/lily-rebuild-pdfs.py \
  	ltximg/ltximg.pl \
 -	luaotfload/luaotfload-tool.lua \
- 	lwarp/lwarpmk.lua \
+-	lwarp/lwarpmk.lua \
 -	m-tx/m-tx.lua \
 -	makedtx/makedtx.pl \
  	make4ht/make4ht \
@@ -168,7 +168,7 @@ Index: texlive-20170524-source/texk/texlive/linked_scripts/Makefile.in
  	tex4ebook/tex4ebook \
  	texcount/texcount.pl \
  	texdef/texdef.pl \
-@@ -405,27 +324,13 @@ texmf_other_scripts = \
+@@ -405,27 +323,13 @@ texmf_other_scripts = \
  	texlive/fmtutil-sys.sh \
  	texlive/fmtutil-user.sh \
  	texlive/fmtutil.pl \
@@ -198,7 +198,7 @@ Index: texlive-20170524-source/texk/texlive/linked_scripts/Makefile.in
  
  nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_shell_scripts) \
-@@ -433,7 +338,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
+@@ -433,7 +337,6 @@ nobase_dist_texmf_scripts_SCRIPTS = \
  	$(texmf_context_scripts)
  
  bin_links = \
