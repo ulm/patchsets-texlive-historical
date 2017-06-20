@@ -1,0 +1,34 @@
+pdftoepdf.w: work around generation removing too much whitespace
+
+The error observed with Clang 3.9.1 (x86_64-apple-darwin16.6.0) is
+
+texlive-20170524-source/texk/web2c/luatexdir/image/pdftoepdf.w:74:34:
+error: 
+      invalid suffix on literal; C++11 requires a space between literal and
+      identifier [-Wreserved-user-defined-literal]
+snprintf(ck,PDF_CHECKSUM_SIZE,"%"PRIu64"_%"PRIu64,(uint64_t)size,(uint64...
+                                 ^
+
+Adding newlines does the trick, because the generation keeps them, and
+the compiler as suck sees whitespace between the literal and identifier.
+This is of course a kludge, the original code is correct, the generator
+should probably be fixed.
+
+
+Index: texlive-20170524-source/texk/web2c/luatexdir/image/pdftoepdf.w
+===================================================================
+--- texlive-20170524-source.orig/texk/web2c/luatexdir/image/pdftoepdf.w
++++ texlive-20170524-source/texk/web2c/luatexdir/image/pdftoepdf.w
+@@ -71,7 +71,11 @@ static char *get_file_checksum(const cha
+         ck = (char *) malloc(PDF_CHECKSUM_SIZE);
+         if (ck == NULL)
+             formatted_error("pdf inclusion","out of memory while processing '%s'", a);
+-        snprintf(ck, PDF_CHECKSUM_SIZE, "%" PRIu64 "_%" PRIu64, (uint64_t) size,(uint64_t) mtime);
++        snprintf(ck, PDF_CHECKSUM_SIZE, "%" 
++PRIu64
++ "_%" 
++PRIu64
++, (uint64_t) size,(uint64_t) mtime);
+    } else {
+         switch (fe) {
+             case FE_FAIL:

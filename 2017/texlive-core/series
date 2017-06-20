@@ -5,3 +5,4 @@
 050_all_latex2man_predictable_tmp.patch
 060_all_luatex_zlib.patch
 070_all_luatex_ggc7_align.patch
+080_all_pdftoepdf-c++11.patch
