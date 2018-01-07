@@ -6,3 +6,4 @@
 060_all_luatex_zlib.patch
 070_all_luatex_ggc7_align.patch
 080_all_pdftoepdf-c++11.patch
+090_all_poppler-0.59.patch
