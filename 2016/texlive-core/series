@@ -4,3 +4,4 @@
 040_all_remove_define_abs.patch
 050_all_latex2man_predictable_tmp.patch
 060_all_luatex_zlib.patch
+070_all_poppler060.patch
